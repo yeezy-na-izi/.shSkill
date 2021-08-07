@@ -3,18 +3,6 @@ from django.contrib.auth.models import AbstractBaseUser, BaseUserManager
 from django.db.models import Model
 
 
-class Student(models.Model):
-    pass
-
-
-class Teacher(models.Model):
-    pass
-
-
-class Coordinator(models.Model):
-    pass
-
-
 class MyAccountManager(BaseUserManager):
     def create_user(self, email, username, first_name, last_name, photo='', phone='', about_me='', password=None):
         if not email:
@@ -52,6 +40,26 @@ class MyAccountManager(BaseUserManager):
         return user
 
 
+class Student(models.Model):
+    class Meta:
+        verbose_name = 'Студент'
+        verbose_name_plural = 'Студенты'
+    balance = models.IntegerField(verbose_name='Баланс')
+
+
+class Teacher(models.Model):
+    class Meta:
+        verbose_name = 'Учитель'
+        verbose_name_plural = 'Учителя'
+
+
+class Coordinator(models.Model):
+    class Meta:
+        verbose_name = 'Координатор'
+        verbose_name_plural = 'Координаторы'
+    # title = models.CharField
+
+
 class Account(AbstractBaseUser):
     class Meta:
         verbose_name = 'Человек'
@@ -65,9 +73,9 @@ class Account(AbstractBaseUser):
     is_active = models.BooleanField(default=True)
     is_staff = models.BooleanField(default=False)
     is_superuser = models.BooleanField(default=False)
-    student = models.ForeignKey(Student, on_delete=models.CASCADE, blank=True)
-    teacher = models.ForeignKey(Teacher, on_delete=models.CASCADE, blank=True)
-    coordinator = models.ForeignKey(Coordinator, on_delete=models.CASCADE, blank=True)
+    student = models.OneToOneField(Student, on_delete=models.CASCADE, blank=True, null=True)
+    teacher = models.OneToOneField(Teacher, on_delete=models.CASCADE, blank=True, null=True)
+    coordinator = models.OneToOneField(Coordinator, on_delete=models.CASCADE, blank=True, null=True)
     first_name = models.CharField(verbose_name='first name', max_length=30)
     last_name = models.CharField(verbose_name='last name', max_length=60)
     phone = models.CharField(verbose_name='phone', max_length=15, blank=True, default=0)
