@@ -1,0 +1,4 @@
+Django
+six
+psycopg2
+Pillow
