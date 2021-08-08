@@ -44,6 +44,7 @@ class Student(models.Model):
     class Meta:
         verbose_name = 'Студент'
         verbose_name_plural = 'Студенты'
+
     balance = models.IntegerField(verbose_name='Баланс')
 
 
@@ -57,7 +58,6 @@ class Coordinator(models.Model):
     class Meta:
         verbose_name = 'Координатор'
         verbose_name_plural = 'Координаторы'
-    # title = models.CharField
 
 
 class Account(AbstractBaseUser):
