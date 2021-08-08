@@ -1,43 +1,99 @@
-{% extends "extends/index.html" %}
 {% load static %}
-{% block content %}
-<!-- Button trigger modal -->
-<button
-        type="button"
-        class="btn btn-primary"
-        data-mdb-toggle="modal"
-        data-mdb-target="#exampleModal"
->
-    Launch demo modal
-</button>
+<html lang="en">
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"/>
+    <meta http-equiv="x-ua-compatible" content="ie=edge"/>
 
-<!-- Modal -->
-<div
-        class="modal fade"
-        id="exampleModal"
-        tabindex="-1"
-        aria-labelledby="exampleModalLabel"
-        aria-hidden="true"
->
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
-                <button
-                        type="button"
-                        class="btn-close"
-                        data-mdb-dismiss="modal"
-                        aria-label="Close"
-                ></button>
-            </div>
-            <div class="modal-body">...</div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-mdb-dismiss="modal">
-                    Close
-                </button>
-                <button type="button" class="btn btn-primary">Save changes</button>
+    <title>test</title>
+
+    <!-- Fonts -->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.11.2/css/all.css"/>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap"/>
+
+    <!-- Styles -->
+    <link href="{% static 'css/bootstrap.min.css' %}" rel="stylesheet"
+          integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
+    <link rel="stylesheet" href="{% static 'css/style.css' %}"/>
+
+
+</head>
+<body>
+
+
+<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#user-edit">
+    Редактирование страницы
+</button>
+<p></p>
+<a class="btn btn-outline-secondary" href="/">Выход</a>
+<form method="POST" name="user-info" class="p-2" enctype="multipart/form-data">
+    {% csrf_token %}
+    <div class="modal fade" id="user-edit" tabindex="-1" aria-labelledby="user-edit-label"
+         aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="user-edit-label">Редактирование страницы</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+
+                    <div class="input-group mb-3">
+                        <label>
+                            <input value="qwe" type="text" class="form-control"
+                                   name="username" placeholder="Username"
+                                   autocomplete="username" required>
+                        </label>
+                    </div>
+                    <div class="input-group mb-3">
+                        <label>
+                            <input value="qwe" type="text" class="form-control"
+                                   name="first_name" placeholder="Имя"
+                                   autocomplete="first_name" required>
+                        </label>
+                    </div>
+                    <div class="input-group mb-3">
+                        <label>
+                            <input value="йцу" type="text" class="form-control"
+                                   name="last_name" placeholder="Фамилия"
+                                   autocomplete="last_name" required>
+                        </label>
+                    </div>
+                    <div class="input-group">
+                        <label>
+                            <textarea name="about_me" class="form-control"
+                                      placeholder="О себе"></textarea>
+                        </label>
+                    </div>
+                    <p></p>
+                    <div class="input-group mb-3">
+                        <label>
+                            <input value="йцу" type="text" class="form-control" name="phone"
+                                   placeholder="Телефон"
+                                   autocomplete="phone">
+                        </label>
+                    </div>
+                    <div class="input-group mb-3">
+                        <label class="input-group-text" for="photo">Обновить аватарку</label>
+                        <input type="file" class="form-control" id="photo" placeholder="Аватарка" name="photo"
+                               accept="image/*">
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Закрыть</button>
+                        <button type="submit" class="btn btn-primary" name="update_user">Сохранить</button>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
-</div>
-{% endblock %}
+</form>
+<script src="{% static 'static/js/bootstrap.bundle.min.js' %}"
+        integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4"
+        crossorigin="anonymous"></script>
+<script type="text/javascript" src="js/script.js"></script>
+</body>
+</html>
+
+
+
+

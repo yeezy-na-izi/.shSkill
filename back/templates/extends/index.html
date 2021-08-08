@@ -21,7 +21,9 @@
 <body>
 <!--Main Navigation-->
 
+
 {% include "extends/navbar.html" %}
+
 {% block header %}
 
 {% endblock %}
@@ -30,8 +32,8 @@
 
 {% include "extends/footer.html" %}
 
-<script type="text/javascript" src="js/mdb.min.js"></script>
-<script type="text/javascript" src="js/script.js"></script>
+<script type="text/javascript" src="{% static 'js/mdb.min.js' %}"></script>
+<script type="text/javascript" src="{% static 'js/script.js' %}"></script>
 {% block script %}
 {% endblock %}
 </body>
