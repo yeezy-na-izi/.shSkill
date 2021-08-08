@@ -1,99 +1,162 @@
-{% load static %}
-<html lang="en">
-<head>
-    <meta charset="UTF-8"/>
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"/>
-    <meta http-equiv="x-ua-compatible" content="ie=edge"/>
 
-    <title>test</title>
+                    <div class="tab-pane fade" id="navbarLogin-signup" role="tabpanel">
 
-    <!-- Fonts -->
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.11.2/css/all.css"/>
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap"/>
+                        <!-- Default form register  -->
+                        <form id="register" class="text-center" action="register" method="post"
+                              novalidate="novalidate" data-dashlane-rid="faeca419098f0f69">
 
-    <!-- Styles -->
-    <link href="{% static 'css/bootstrap.min.css' %}" rel="stylesheet"
-          integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
-    <link rel="stylesheet" href="{% static 'css/style.css' %}"/>
+                            <input type="hidden" id="signonsecurity" name="signonsecurity"
+                                   value="a707b380f4"><input
+                                type="hidden" name="_wp_http_referer" value="/wp-admin/admin-ajax.php?p=120543">
+                            <!-- Social login -->
+
+                            <p class="status"></p>
 
 
-</head>
-<body>
 
+                                <div class="wp-social-login-widget">
 
-<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#user-edit">
-    Редактирование страницы
-</button>
-<p></p>
-<a class="btn btn-outline-secondary" href="/">Выход</a>
-<form method="POST" name="user-info" class="p-2" enctype="multipart/form-data">
-    {% csrf_token %}
-    <div class="modal fade" id="user-edit" tabindex="-1" aria-labelledby="user-edit-label"
-         aria-hidden="true">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="user-edit-label">Редактирование страницы</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                    <div class="wp-social-login-connect-with">Connect with:</div>
+
+                                    <div class="wp-social-login-provider-list">
+
+                                        <a rel="nofollow"
+                                           href="https://mdbootstrap.com/wp-login.php?action=wordpress_social_authenticate&amp;mode=login&amp;provider=Facebook&amp;redirect_to=https%3A%2F%2Fmdbootstrap.com%2Fdocs%2Fstandard%2Fdesign-blocks%2Fmodals%2F"
+                                           title="Connect with Facebook"
+                                           class="wp-social-login-provider wp-social-login-provider-facebook btn btn-primary btn-floating mx-1"
+                                           data-provider="Facebook" role="button"><i
+                                                class="fab fa-facebook-f"></i></a>
+
+                                        <a rel="nofollow"
+                                           href="https://mdbootstrap.com/wp-login.php?action=wordpress_social_authenticate&amp;mode=login&amp;provider=Google&amp;redirect_to=https%3A%2F%2Fmdbootstrap.com%2Fdocs%2Fstandard%2Fdesign-blocks%2Fmodals%2F"
+                                           title="Connect with Google"
+                                           class="wp-social-login-provider wp-social-login-provider-google btn btn-primary btn-floating mx-1"
+                                           data-provider="Google" role="button"><i
+                                                class="fab fa-google"></i></a>
+
+                                        <a rel="nofollow"
+                                           href="https://mdbootstrap.com/wp-login.php?action=wordpress_social_authenticate&amp;mode=login&amp;provider=Twitter&amp;redirect_to=https%3A%2F%2Fmdbootstrap.com%2Fdocs%2Fstandard%2Fdesign-blocks%2Fmodals%2F"
+                                           title="Connect with Twitter"
+                                           class="wp-social-login-provider wp-social-login-provider-twitter btn btn-primary btn-floating mx-1"
+                                           data-provider="Twitter" role="button"><i class="fab fa-twitter"></i></a>
+
+                                    </div>
+
+                                    <div class="wp-social-login-widget-clearing"></div>
+
+                                </div>
+
+                                <!-- wsl_render_auth_widget -->
+
+                            </div>
+                            <!-- Social login -->
+
+                            <p class="text-center">or:</p>
+
+                            <!-- Name input -->
+                            <div class="form-outline form-auth-mdb mb-4">
+                                <input type="text" id="signonname" class="form-control" name="signonname"
+                                       data-dashlane-rid="30399589e69fc183">
+                                <label for="signonname" class="form-label" style="margin-left: 0px;">Your
+                                    name </label>
+                                <div class="form-notch">
+                                    <div class="form-notch-leading" style="width: 9px;"></div>
+                                    <div class="form-notch-middle" style="width: 68.8px;"></div>
+                                    <div class="form-notch-trailing"></div>
+                                </div>
+                            </div>
+
+                            <!-- Username input -->
+                            <div class="form-outline form-auth-mdb mb-4">
+                                <input type="text" id="signonusername" class="form-control"
+                                       name="signonusername"
+                                       data-dashlane-rid="de79f058989a9be2">
+                                <label for="signonusername" class="form-label" style="margin-left: 0px;">Your
+                                    username </label>
+                                <div class="form-notch">
+                                    <div class="form-notch-leading" style="width: 9px;"></div>
+                                    <div class="form-notch-middle" style="width: 93.6px;"></div>
+                                    <div class="form-notch-trailing"></div>
+                                </div>
+                            </div>
+
+                            <!-- Email input -->
+                            <div class="form-outline form-auth-mdb mb-4">
+                                <input type="email" id="email" class="form-control" name="email"
+                                       data-dashlane-rid="44f87ae0b8453ec9">
+                                <label for="email" class="form-label" style="margin-left: 0px;">Your
+                                    email </label>
+                                <div class="form-notch">
+                                    <div class="form-notch-leading" style="width: 9px;"></div>
+                                    <div class="form-notch-middle" style="width: 68px;"></div>
+                                    <div class="form-notch-trailing"></div>
+                                </div>
+                            </div>
+
+                            <!-- Password input -->
+                            <div class="form-outline form-auth-mdb mb-4">
+                                <input type="password" id="signonpassword" class="form-control"
+                                       name="signonpassword" autocomplete="off"
+                                       data-dashlane-rid="8465ab07685aadc3">
+                                <label for="signonpassword" class="form-label" style="margin-left: 0px;">Your
+                                    password </label>
+                                <div class="form-notch">
+                                    <div class="form-notch-leading" style="width: 9px;"></div>
+                                    <div class="form-notch-middle" style="width: 92.8px;"></div>
+                                    <div class="form-notch-trailing"></div>
+                                </div>
+                            </div>
+
+                            <!-- Repeat Password input -->
+                            <div class="form-outline form-auth-mdb mb-4">
+                                <input type="password" id="password2" class="form-control" name="password2"
+                                       autocomplete="off" data-dashlane-rid="365fd6e5124f622a">
+                                <label for="password2" class="form-label" style="margin-left: 0px;">Repeat
+                                    password </label>
+                                <div class="form-notch">
+                                    <div class="form-notch-leading" style="width: 9px;"></div>
+                                    <div class="form-notch-middle" style="width: 106.4px;"></div>
+                                    <div class="form-notch-trailing"></div>
+                                </div>
+                            </div>
+
+                            <!-- Subscribe checkbox -->
+                            <div class="form-check d-flex justify-content-center">
+                                <input type="checkbox" class="form-check-input me-1" id="newsletter"
+                                       name="newsletter" value="subscribe" data-dashlane-rid="1aa89bd29050f9e3">
+                                <label class="form-check-label" for="newsletter">I agree to sign up for MDB
+                                    account
+                                    notifications and newsletter</label>
+                            </div>
+
+                            <div class="form-text text-center small text-muted mb-4">
+                                By signing up you agree to data processing by the administrator: StartupFlow
+                                s.c.
+                                located in Kijowska 7, Warsaw. The administrator processes data following the <a
+                                    target="_blank" href="https://mdbootstrap.com/privacy-policy/">Privacy
+                                Policy</a>.
+                            </div>
+
+                            <button class="btn btn-primary btn-block mb-3" id="AJAXAuthRegisterBtn"
+                                    type="submit"
+                                    value="SIGNUP" data-dashlane-rid="c279648018738e68">
+                                Sign up
+                            </button>
+
+                        </form>
+                        <!-- Default form register  -->
+                    </div>
+                    <!--/.Panel 2-->
                 </div>
-                <div class="modal-body">
-
-                    <div class="input-group mb-3">
-                        <label>
-                            <input value="qwe" type="text" class="form-control"
-                                   name="username" placeholder="Username"
-                                   autocomplete="username" required>
-                        </label>
-                    </div>
-                    <div class="input-group mb-3">
-                        <label>
-                            <input value="qwe" type="text" class="form-control"
-                                   name="first_name" placeholder="Имя"
-                                   autocomplete="first_name" required>
-                        </label>
-                    </div>
-                    <div class="input-group mb-3">
-                        <label>
-                            <input value="йцу" type="text" class="form-control"
-                                   name="last_name" placeholder="Фамилия"
-                                   autocomplete="last_name" required>
-                        </label>
-                    </div>
-                    <div class="input-group">
-                        <label>
-                            <textarea name="about_me" class="form-control"
-                                      placeholder="О себе"></textarea>
-                        </label>
-                    </div>
-                    <p></p>
-                    <div class="input-group mb-3">
-                        <label>
-                            <input value="йцу" type="text" class="form-control" name="phone"
-                                   placeholder="Телефон"
-                                   autocomplete="phone">
-                        </label>
-                    </div>
-                    <div class="input-group mb-3">
-                        <label class="input-group-text" for="photo">Обновить аватарку</label>
-                        <input type="file" class="form-control" id="photo" placeholder="Аватарка" name="photo"
-                               accept="image/*">
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Закрыть</button>
-                        <button type="submit" class="btn btn-primary" name="update_user">Сохранить</button>
-                    </div>
-                </div>
+                <!-- Pills panels -->
+            </div>
+            <!-- Modal footer -->
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-mdb-dismiss="modal">
+                    Close
+                </button>
             </div>
         </div>
+        <!-- Modal content -->
     </div>
-</form>
-<script src="{% static 'static/js/bootstrap.bundle.min.js' %}"
-        integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4"
-        crossorigin="anonymous"></script>
-<script type="text/javascript" src="js/script.js"></script>
-</body>
-</html>
-
-
-
-
+</div>
