@@ -18,20 +18,27 @@
                 <li class="nav-item">
                     <a class="nav-link" href="">Учителя</a>
                 </li>
+                {% if request.user.is_admin %}
+                <li class="nav-item">
+                    <a class="nav-link" href="/admin">Админка</a>
+                </li>
+                {% endif %}
             </ul>
 
             <ul class="navbar-nav d-flex flex-row">
+                {% if not request.user.is_authenticated %}
                 <li class="nav-item me-3 me-lg-0">
                     <a type="button" class=nav-link" data-mdb-toggle="modal" data-mdb-target="#exampleModal">
                         Вход
                     </a>
                 </li>
+                {% else %}
                 <li class="nav-item me-3 me-lg-0">
-                    <a class="nav-link" href="">
+                    <a class="nav-link" href="/profile/{{request.user.username}}">
                         Профиль
                     </a>
                 </li>
-
+                {% endif %}
             </ul>
         </div>
     </div>
@@ -67,8 +74,9 @@
                 <div class="tab-content">
                     <div class="tab-pane fade in active show" id="navbarLogin-login" role="tabpanel">
                         <form id="login" class="text-center" method="post" data-form-type="login">
+                            {% csrf_token %}
 
-
+                            <input type="hidden" name="login" value="login">
                             <div class="wp-social-login-widget">
 
                                 <div class="wp-social-login-connect-with">Connect with:</div>
@@ -144,7 +152,9 @@
                         </form>
                     </div>
                     <div class="tab-pane fade" id="navbarLogin-signup" role="tabpanel">
-                        <form id="register" class="text-center" method="post" novalidate="novalidate">
+                        <form id="register" class="text-center" method="post">
+                            {% csrf_token %}
+
                             <div class="wp-social-login-widget">
                                 <div class="wp-social-login-connect-with">Connect with:</div>
                                 <div class="wp-social-login-provider-list">
