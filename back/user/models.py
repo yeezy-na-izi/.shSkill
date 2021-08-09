@@ -1,6 +1,5 @@
 from django.db import models
 from django.contrib.auth.models import AbstractBaseUser, BaseUserManager
-from django.db.models import Model
 
 
 class MyAccountManager(BaseUserManager):
@@ -40,6 +39,24 @@ class MyAccountManager(BaseUserManager):
         return user
 
 
+class Administrator(models.Model):
+    class Meta:
+        verbose_name = 'Администратор'
+        verbose_name_plural = 'Администратор'
+    roles = (('Tech', 'Технический Администратор'),
+             ('Course', 'Администратор Курса'),
+             ('World', 'Всемирный Администратор'))
+    role = models.CharField(verbose_name='role', choices=roles, max_length=6)
+
+    def __str__(self):
+        from user.models import Account
+        try:
+            acc = Account.objects.get(administrator=Administrator.objects.get(pk=self.pk))
+            return str(acc)
+        except Exception:
+            return str(self.pk)
+
+
 class Student(models.Model):
     class Meta:
         verbose_name = 'Студент'
@@ -47,17 +64,41 @@ class Student(models.Model):
 
     balance = models.IntegerField(verbose_name='Баланс')
 
+    def __str__(self):
+        from user.models import Account
+        try:
+            acc = Account.objects.get(student=Student.objects.get(pk=self.pk))
+            return str(acc)
+        except Exception:
+            return str(self.pk)
+
 
 class Teacher(models.Model):
     class Meta:
         verbose_name = 'Учитель'
         verbose_name_plural = 'Учителя'
 
+    def __str__(self):
+        from user.models import Account
+        try:
+            acc = Account.objects.get(teacher=Teacher.objects.get(pk=self.pk))
+            return str(acc)
+        except Exception:
+            return str(self.pk)
+
 
 class Coordinator(models.Model):
     class Meta:
         verbose_name = 'Координатор'
         verbose_name_plural = 'Координаторы'
+
+    def __str__(self):
+        from user.models import Account
+        try:
+            acc = Account.objects.get(coordinator=Coordinator.objects.get(pk=self.pk))
+            return str(acc)
+        except Exception:
+            return str(self.pk)
 
 
 class Account(AbstractBaseUser):
@@ -76,6 +117,7 @@ class Account(AbstractBaseUser):
     student = models.OneToOneField(Student, on_delete=models.CASCADE, blank=True, null=True)
     teacher = models.OneToOneField(Teacher, on_delete=models.CASCADE, blank=True, null=True)
     coordinator = models.OneToOneField(Coordinator, on_delete=models.CASCADE, blank=True, null=True)
+    administrator = models.OneToOneField(Administrator, on_delete=models.CASCADE, blank=True, null=True)
     first_name = models.CharField(verbose_name='first name', max_length=30)
     last_name = models.CharField(verbose_name='last name', max_length=60)
     phone = models.CharField(verbose_name='phone', max_length=15, blank=True, default=0)

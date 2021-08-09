@@ -1,6 +1,6 @@
 from django.shortcuts import render
 
 
-def first_try(request):
+def myPage(request):
     context = {}
-    return render(request, 'extends/index.html', context)
+    return render(request, 'user/myPage.html', context)

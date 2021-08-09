@@ -10,6 +10,9 @@ class Task(models.Model):
     title = models.CharField(verbose_name='Название', max_length=100)
     description = models.TextField(verbose_name='Условие задачи')
 
+    def __str__(self):
+        return self.title
+
 
 class Lesson(models.Model):
     class Meta:
@@ -18,6 +21,9 @@ class Lesson(models.Model):
 
     title = models.CharField(verbose_name='Название', max_length=100)
     tasks = models.ManyToManyField(verbose_name='Задачи', to=Task, blank=True)
+
+    def __str__(self):
+        return self.title
 
 
 class Course(models.Model):
@@ -30,6 +36,9 @@ class Course(models.Model):
     lessons = models.ManyToManyField(verbose_name='Уроки', to=Lesson)
     price = models.FloatField(verbose_name='Цена')
 
+    def __str__(self):
+        return self.title
+
 
 class Group(models.Model):
     class Meta:
@@ -40,6 +49,10 @@ class Group(models.Model):
     teacher = models.ForeignKey(verbose_name='Учитель', to=Teacher, on_delete=models.CASCADE)
     course = models.ForeignKey(verbose_name='Курс', to=Course, on_delete=models.CASCADE)
     chat = models.URLField(verbose_name='Ссылка на чат')
+    title = models.CharField(verbose_name='Заголовок', max_length=100)
+
+    def __str__(self):
+        return self.title
 
 
 class Date(models.Model):
@@ -52,3 +65,6 @@ class Date(models.Model):
     description = models.TextField(verbose_name='Описание')
     lesson_link = models.URLField(verbose_name='Ссылка на подключение')
     lesson = models.ForeignKey(verbose_name='Урок', to=Lesson, on_delete=models.CASCADE)
+
+    def __str__(self):
+        return f"{self.date_time} {self.group}"
