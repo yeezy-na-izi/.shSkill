@@ -37,7 +37,24 @@
         <button type="button" class="btn-close" data-mdb-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
-
+          <form method="POST">
+              {% csrf_token %}
+              <div class="form-outline mb-4">
+                  <input
+                    type="text"
+                    id="titleCourse"
+                    class="form-control"
+                    data-mdb-showcounter="true"
+                    maxlength="40"
+                  />
+                  <label class="form-label" for="titleCourse">Название курса</label>
+                  <div class="form-helper"></div>
+              </div>
+              <div class="form-outline">
+                <textarea class="form-control" id="textAreaExample" rows="4" maxlength="256"></textarea>
+                <label class="form-label" for="textAreaExample">Краткое описание</label>
+              </div>
+          </form>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-primary">Добавить</button>
