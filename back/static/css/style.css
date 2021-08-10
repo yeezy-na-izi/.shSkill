@@ -1,1 +1,11 @@
+.card-animation:hover {
+    width: 100px;
+    height: 100px;
+    background: grey;
+    transition: all ease-in 600ms;
 
+}
+.card-animation {
+    width: 100px;
+    height: 100px;
+}

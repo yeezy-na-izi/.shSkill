@@ -1,0 +1,17 @@
+{% extends "extends/index.html" %}
+{% load static %}
+{% block content %}
+
+<div class="container">
+    {% for course in courses %}
+    <div class="row">
+
+        <div class="alert alert-light shadow-5 col-md mt-4 card-animation " role="alert"
+             data-mdb-color="light">
+            {{ course }}
+        </div>
+    </div>
+    {% endfor %}
+</div>
+
+{% endblock %}

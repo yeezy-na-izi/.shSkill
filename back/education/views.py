@@ -20,7 +20,7 @@ def home(request):
         return render(request, 'education/home.html', context)
 
 
-def test(request):
+def coursesFAQ(request):
     courses = Course.objects.all()
     context = {'courses': courses}
-    return render(request, 'education/home2.html', context)
+    return render(request, 'education/coursesfaq.html', context)
