@@ -35,6 +35,7 @@ class Course(models.Model):
     description = models.TextField(verbose_name='Описание')
     lessons = models.ManyToManyField(verbose_name='Уроки', to=Lesson)
     price = models.FloatField(verbose_name='Цена')
+    course_id = models.CharField(verbose_name='Курс линк', max_length=100, unique=True)
 
     def __str__(self):
         return self.title
