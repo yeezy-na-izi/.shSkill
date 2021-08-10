@@ -30,10 +30,10 @@
             </a>
             </br>
             {% endif %}
-                 Почта:
-                <a href="mailto:{{user.email}}">
-                    {{ user.email }}
-                </a>
+            Почта:
+            <a href="mailto:{{user.email}}">
+                {{ user.email }}
+            </a>
 
         </div>
         <a href="/logout" class="btn btn-danger mb-4 gx-5 mt-4">Выход</a>
@@ -43,18 +43,48 @@
 {% if ended or not_ended %}
 <hr class="my-5"/>
 <div class="row">
-    <h2 class="g-5">
+    <h2 class="ms-4">
         Твои курсы:
     </h2>
     {% if not_ended %}
-    <h3>
+    <h3 class="ms-5">
         В процессе:
     </h3>
+    {% for courses_list in not_ended %}
+    <div class="row d-flex justify-content-center">
+        {% for course in courses_list %}
+        <div class="card text-white bg-{{ course.color }} mb-3 mt-2 ms-3 me-3" style="max-width: 30rem;">
+            <div class="card-header">Курс</div>
+            <div class="card-body">
+                <h5 class="card-title">{{ course.title }}</h5>
+                <div class="card-text">
+                    {{ course.description | linebreaks}}
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+    {% endfor %}
     {% endif %}
     {% if ended %}
-    <h3>
-        Законченный
+    <h3 class="ms-5">
+        Законченные:
     </h3>
+    {% for courses_list in ended %}
+    <div class="row d-flex justify-content-center">
+        {% for course in courses_list %}
+        <div class="card text-white bg-{{ course.color }} mb-3 mt-2 ms-3 me-3" style="max-width: 30rem;">
+            <div class="card-header">Курс</div>
+            <div class="card-body">
+                <h5 class="card-title">{{ course.title }}</h5>
+                <div class="card-text">
+                    {{ course.description | linebreaks}}
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+    {% endfor %}
     {% endif %}
 </div>
 {% endif %}
