@@ -49,6 +49,7 @@
 
 
 <!-- Modal -->
+{% if not request.user.is_authenticated %}
 <div
         class="modal fade mt-5"
         id="exampleModal"
@@ -284,3 +285,4 @@
         </div>
     </div>
 </div>
+{% endif %}
