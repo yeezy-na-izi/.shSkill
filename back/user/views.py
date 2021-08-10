@@ -13,8 +13,18 @@ def profile(request, username):
     user = Account.objects.get(username=username)
     try:
         student = user.student
-        ended_courses = Group.objects.filter(users=student, ended=True)
-        in_progress_courses = Group.objects.filter(users=student, ended=False)
+        ended_courses_l = Group.objects.filter(users=student, ended=True)
+        ended_courses = []
+        for i in range(len(ended_courses_l)):
+            if i % 2 == 0:
+                ended_courses.append([])
+            ended_courses[-1].append(ended_courses_l[i].course)
+        in_progress_courses_l = Group.objects.filter(users=student, ended=False)
+        in_progress_courses = []
+        for i in range(len(in_progress_courses_l)):
+            if i % 2 == 0:
+                in_progress_courses.append([])
+            in_progress_courses[-1].append(in_progress_courses_l[i].course)
     except:
         ended_courses = []
         in_progress_courses = []
