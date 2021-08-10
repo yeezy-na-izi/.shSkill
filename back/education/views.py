@@ -45,7 +45,9 @@ def coursesFAQ(request, course_id):
 def courses_list(request):
     courses = Course.objects.all()
     l_courses = []
-    for i in courses:
-        l_courses.append(i)
+    for i in range(len(courses)):
+        if i % 2 == 0:
+            l_courses.append([])
+        l_courses[-1].append(courses[i])
     context = {'courses': l_courses}
     return render(request, 'education/courses.html', context)

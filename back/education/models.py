@@ -31,10 +31,22 @@ class Course(models.Model):
         verbose_name = 'Курс'
         verbose_name_plural = 'Курсы'
 
+    colors = (
+        ('primary', 'Синий'),
+        ('secondary', 'Фиолетовый'),
+        ('success', 'Зеленый'),
+        ('danger', 'Красный'),
+        ('warning', 'Желтый'),
+        ('info', 'Голубой'),
+        ('light', 'Прозрачный',),
+        ('dark', 'Черный'),
+
+    )
     title = models.CharField(verbose_name='Название', max_length=100)
     description = models.TextField(verbose_name='Описание')
     lessons = models.ManyToManyField(verbose_name='Уроки', to=Lesson)
     price = models.FloatField(verbose_name='Цена')
+    color = models.CharField(verbose_name='Цвет', max_length=16, choices=colors, default='primary')
     course_id = models.CharField(verbose_name='Курс линк', max_length=100, unique=True)
 
     def __str__(self):

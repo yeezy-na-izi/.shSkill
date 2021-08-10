@@ -3,7 +3,8 @@
 {{user}}
 {% endblock %}
 {% block content %}
-<div class="row mt-4">
+<div class="row">
+    <h1 class="g-5">{{ user }}</h1>
     {% if user.photo %}
     {% else %}
     <div class="col-md-6 gx-5 mb-4">
@@ -22,9 +23,12 @@
         </p>
         <p><strong>Контактная информация</strong></p>
         <p class="text-muted">
-            <p>{{ user.phone }}</p>
-            <p>{{ user.email }}</p>
-        </p>
+            {% if user.phone %}
+            <a href="tel:{{user.phone}}">
+                {{ user.phone }}
+            </a>
+            {% endif %}
+        <p>{{ user.email }}</p>
     </div>
 </div>
 <hr class="my-5"/>

@@ -3,17 +3,19 @@
 {% block content %}
 
 <div class="container">
-    {% for course in courses %}
+    {% for courses_list in courses %}
     <div class="row">
-        <div class="card text-white bg-primary mb-3 mt-2" style="max-width: 40rem;">
+        {% for course in courses_list %}
+        <div class="card text-white bg-{{ course.color }} mb-3 mt-2 " style="max-width: 40rem;">
             <div class="card-header">Курс</div>
             <div class="card-body">
                 <h5 class="card-title">{{ course.title }}</h5>
-                <p class="card-text">
+                <p class="car d-text">
                     {{ course.description | linebreaks}}
                 </p>
             </div>
         </div>
+        {% endfor %}
     </div>
     {% endfor %}
     {% if request.user.is_admin %}
