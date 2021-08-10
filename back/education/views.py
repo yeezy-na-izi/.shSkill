@@ -5,7 +5,6 @@ from user.forms import LoginUserForm, CreateUserForm
 from education.models import Course
 
 
-
 def login_and_register(request):
     if 'login' in request.POST:
         form = LoginUserForm(data=request.POST)

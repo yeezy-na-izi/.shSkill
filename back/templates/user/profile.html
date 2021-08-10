@@ -17,20 +17,46 @@
     </div>
     {% endif %}
     <div class="col-md-6 gx-5 mb-4">
-        <h4><strong>О себе</strong></h4>
-        <p class="text-muted">
+        <h4><strong>О себе:</strong></h4>
+        <p class="text-muted shadow rounded-1 p-2">
             {{ user.about_me }}
         </p>
         <p><strong>Контактная информация</strong></p>
-        <p class="text-muted">
+        <div class="text-muted shadow rounded-1 p-2">
             {% if user.phone %}
+            Телефон:
             <a href="tel:{{user.phone}}">
                 {{ user.phone }}
             </a>
+            </br>
             {% endif %}
-        <p>{{ user.email }}</p>
+                 Почта:
+                <a href="mailto:{{user.email}}">
+                    {{ user.email }}
+                </a>
+
+        </div>
+        <a href="/logout" class="btn btn-danger mb-4 gx-5 mt-4">Выход</a>
     </div>
 </div>
+{% if request.user == user %}
+{% if ended or not_ended %}
 <hr class="my-5"/>
-<a href="/logout" class="btn btn-danger mb-4 gx-5">Выход</a>
-{% endblock %}
+<div class="row">
+    <h2 class="g-5">
+        Твои курсы:
+    </h2>
+    {% if not_ended %}
+    <h3>
+        В процессе:
+    </h3>
+    {% endif %}
+    {% if ended %}
+    <h3>
+        Законченный
+    </h3>
+    {% endif %}
+</div>
+{% endif %}
+{% endif %}
+{% endblock%}
