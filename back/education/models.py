@@ -63,6 +63,7 @@ class Group(models.Model):
     course = models.ForeignKey(verbose_name='Курс', to=Course, on_delete=models.CASCADE)
     chat = models.URLField(verbose_name='Ссылка на чат')
     title = models.CharField(verbose_name='Заголовок', max_length=100)
+    ended = models.BooleanField(verbose_name='Закончена', default=False)
 
     def __str__(self):
         return self.title
