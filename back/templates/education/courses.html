@@ -29,38 +29,60 @@
 
 {% if request.user.is_admin %}
 <!-- Modal -->
-<div class="modal top fade" id="addCourseModal" tabindex="-1" aria-labelledby="CourseModalLabel" aria-hidden="true" data-mdb-backdrop="true" data-mdb-keyboard="true">
-  <div class="modal-dialog modal-lg  modal-dialog-centered">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="CourseModalLabel">Добавить курс</h5>
-        <button type="button" class="btn-close" data-mdb-dismiss="modal" aria-label="Close"></button>
-      </div>
-      <div class="modal-body">
-          <form method="POST">
-              {% csrf_token %}
-              <div class="form-outline mb-4">
-                  <input
-                    type="text"
-                    id="titleCourse"
-                    class="form-control"
-                    data-mdb-showcounter="true"
-                    maxlength="40"
-                  />
-                  <label class="form-label" for="titleCourse">Название курса</label>
-                  <div class="form-helper"></div>
-              </div>
-              <div class="form-outline">
-                <textarea class="form-control" id="textAreaExample" rows="4" maxlength="256"></textarea>
-                <label class="form-label" for="textAreaExample">Краткое описание</label>
-              </div>
-          </form>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-primary">Добавить</button>
-      </div>
+<div class="modal top fade" id="addCourseModal" tabindex="-1" aria-labelledby="CourseModalLabel" aria-hidden="true"
+     data-mdb-backdrop="true" data-mdb-keyboard="true">
+    <div class="modal-dialog modal-lg  modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="CourseModalLabel">Добавить курс</h5>
+                <button type="button" class="btn-close" data-mdb-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <form method="POST">
+                    {% csrf_token %}
+                    <div class="form-outline mb-4">
+                        <input
+                                type="text"
+                                id="titleCourse"
+                                class="form-control"
+                                data-mdb-showcounter="true"
+                                maxlength="40"
+                        />
+                        <label class="form-label" for="titleCourse">Название курса</label>
+                        <div class="form-helper"></div>
+                    </div>
+                    <div class="form-outline">
+                        <textarea class="form-control" id="textAreaExample" rows="4" maxlength="256"></textarea>
+                        <label class="form-label" for="textAreaExample">Краткое описание</label>
+                    </div>
+
+                    <select class="form-select mt-4" aria-label="Default select example" id="ColorCourse">
+                        <option value="primary">Синий</option>
+
+                        <option value="secondary">Фиолетовый</option>
+
+                        <option value="success">Зеленый</option>
+
+                        <option value="danger">Красный</option>
+
+                        <option value="warning">Желтый</option>
+
+                        <option value="info">Голубой</option>
+
+                        <option value="light">Прозрачный</option>
+
+                        <option value="dark">Черный</option>
+                    </select>
+                    <label class="form-label mt-4" for="customFile">Иконка для курса</label>
+                    <input type="file" class="form-control" id="customFile"/>
+
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary">Добавить</button>
+            </div>
+        </div>
     </div>
-  </div>
 </div>
 {% endif %}
 {% endblock %}
