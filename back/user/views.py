@@ -4,11 +4,6 @@ from user.models import Account
 from education.models import Group
 
 
-def myPage(request):
-    context = {}
-    return render(request, 'user/myPage.html', context)
-
-
 def profile(request, username):
     user = Account.objects.get(username=username)
     try:

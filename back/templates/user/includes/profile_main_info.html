@@ -1,0 +1,41 @@
+<div class="row">
+    <h1 class="g-5">{{ user }}</h1>
+    {% if user.photo %}
+    {% else %}
+    <div class="col-md-6 gx-5 mb-4">
+        <div class="bg-image hover-overlay ripple shadow-2-strong rounded-5" data-mdb-ripple-color="light">
+            <img src="https://mdbootstrap.com/img/new/slides/031.jpg" class="img-fluid"/>
+            <a href="#!">
+                <div class="mask" style="background-color: rgba(251, 251, 251, 0.15);"></div>
+            </a>
+        </div>
+    </div>
+    {% endif %}
+    <div class="col-md-6 gx-5 mb-4">
+        <h4><strong>О себе:</strong></h4>
+        <p class="text-muted shadow rounded-1 p-2">
+            {{ user.about_me }}
+        </p>
+        <p><strong>Контактная информация</strong></p>
+        <div class="text-muted shadow rounded-1 p-2">
+            {% if user.phone %}
+            Телефон:
+            <a href="tel:{{user.phone}}">
+                {{ user.phone }}
+            </a>
+            </br>
+            {% endif %}
+            Почта:
+            <a href="mailto:{{user.email}}">
+                {{ user.email }}
+            </a>
+        </div>
+        {% if request.user == user %}
+        {% include 'user/includes/profile_settings.html' %}
+        {% if user.student %}
+        <a href="" class="btn btn-success mb-4 gx-5 mt-4">Пополнить баланс</a>
+        {% endif %}
+        <a href="/logout" class="btn btn-danger mb-4 gx-5 mt-4">Выход</a>
+        {% endif %}
+    </div>
+</div>
