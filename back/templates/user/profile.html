@@ -1,92 +1,12 @@
 {% extends 'extends/index.html' %}
+
 {% block title %}
 {{user}}
 {% endblock %}
-{% block content %}
-<div class="row">
-    <h1 class="g-5">{{ user }}</h1>
-    {% if user.photo %}
-    {% else %}
-    <div class="col-md-6 gx-5 mb-4">
-        <div class="bg-image hover-overlay ripple shadow-2-strong rounded-5" data-mdb-ripple-color="light">
-            <img src="https://mdbootstrap.com/img/new/slides/031.jpg" class="img-fluid"/>
-            <a href="#!">
-                <div class="mask" style="background-color: rgba(251, 251, 251, 0.15);"></div>
-            </a>
-        </div>
-    </div>
-    {% endif %}
-    <div class="col-md-6 gx-5 mb-4">
-        <h4><strong>О себе:</strong></h4>
-        <p class="text-muted shadow rounded-1 p-2">
-            {{ user.about_me }}
-        </p>
-        <p><strong>Контактная информация</strong></p>
-        <div class="text-muted shadow rounded-1 p-2">
-            {% if user.phone %}
-            Телефон:
-            <a href="tel:{{user.phone}}">
-                {{ user.phone }}
-            </a>
-            </br>
-            {% endif %}
-            Почта:
-            <a href="mailto:{{user.email}}">
-                {{ user.email }}
-            </a>
 
-        </div>
-        <a href="/logout" class="btn btn-danger mb-4 gx-5 mt-4">Выход</a>
-    </div>
-</div>
-{% if request.user == user %}
-{% if ended or not_ended %}
-<hr class="my-5"/>
-<div class="row">
-    <h2 class="ms-4">
-        Твои курсы:
-    </h2>
-    {% if not_ended %}
-    <h3 class="ms-5">
-        В процессе:
-    </h3>
-    {% for courses_list in not_ended %}
-    <div class="row d-flex justify-content-center">
-        {% for course in courses_list %}
-        <div class="card text-white bg-{{ course.color }} mb-3 mt-2 ms-3 me-3" style="max-width: 30rem;">
-            <div class="card-header">Курс</div>
-            <div class="card-body">
-                <h5 class="card-title">{{ course.title }}</h5>
-                <div class="card-text">
-                    {{ course.description | linebreaks}}
-                </div>
-            </div>
-        </div>
-        {% endfor %}
-    </div>
-    {% endfor %}
-    {% endif %}
-    {% if ended %}
-    <h3 class="ms-5">
-        Законченные:
-    </h3>
-    {% for courses_list in ended %}
-    <div class="row d-flex justify-content-center">
-        {% for course in courses_list %}
-        <div class="card text-white bg-{{ course.color }} mb-3 mt-2 ms-3 me-3" style="max-width: 30rem;">
-            <div class="card-header">Курс</div>
-            <div class="card-body">
-                <h5 class="card-title">{{ course.title }}</h5>
-                <div class="card-text">
-                    {{ course.description | linebreaks}}
-                </div>
-            </div>
-        </div>
-        {% endfor %}
-    </div>
-    {% endfor %}
-    {% endif %}
-</div>
-{% endif %}
-{% endif %}
+{% block content %}
+
+{% include 'user/includes/profile_main_info.html' %}
+{% include 'user/includes/profile_courses.html' %}
+
 {% endblock%}
