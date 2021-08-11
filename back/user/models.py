@@ -121,7 +121,7 @@ class Account(AbstractBaseUser):
     first_name = models.CharField(verbose_name='first name', max_length=30)
     last_name = models.CharField(verbose_name='last name', max_length=60)
     phone = models.CharField(verbose_name='phone', max_length=15, blank=True, default=0)
-    photo = models.ImageField(verbose_name='photo', blank=True, default='', upload_to='account/static/profile')
+    photo = models.ImageField(verbose_name='photo', blank=True, default='', upload_to='static/user')
     about_me = models.TextField(verbose_name='about me', blank=True, default='')
     mail_notify = models.BooleanField(verbose_name='mail', default=True)
     telegram_notify = models.BooleanField(verbose_name='telegram', default=False)
