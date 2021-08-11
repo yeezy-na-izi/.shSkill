@@ -2,6 +2,7 @@ from django.shortcuts import render, redirect
 from django.contrib.auth import login
 from user.models import Account, Student
 from user.forms import LoginUserForm, CreateUserForm
+from education.forms import CreateCourse
 from education.models import Course
 
 
@@ -42,11 +43,19 @@ def coursesFAQ(request, course_id):
 
 
 def courses_list(request):
+    if request.method == 'POST':
+        login_and_register(request)
+        if 'newCourse' in request.POST:
+            form = CreateCourse(data=request.DATA,
+                                files=request.FILES)
+            form.save()
+    form = CreateCourse()
     courses = Course.objects.all()
     l_courses = []
     for i in range(len(courses)):
         if i % 2 == 0:
             l_courses.append([])
         l_courses[-1].append(courses[i])
-    context = {'courses': l_courses}
+    context = {'courses': l_courses,
+               'form': form}
     return render(request, 'education/courses.html', context)

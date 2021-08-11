@@ -44,10 +44,12 @@ class Course(models.Model):
     )
     title = models.CharField(verbose_name='Название', max_length=100)
     description = models.TextField(verbose_name='Описание')
-    lessons = models.ManyToManyField(verbose_name='Уроки', to=Lesson)
-    price = models.FloatField(verbose_name='Цена')
+    lessons = models.ManyToManyField(verbose_name='Уроки', to=Lesson, blank=True,
+                                     null=True)
     color = models.CharField(verbose_name='Цвет', max_length=16, choices=colors, default='primary')
     course_id = models.CharField(verbose_name='Курс линк', max_length=100, unique=True)
+    photo = models.ImageField(verbose_name='Фото',
+                              upload_to='static/education/course')
 
     def __str__(self):
         return self.title
