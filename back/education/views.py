@@ -46,7 +46,7 @@ def courses_list(request):
     if request.method == 'POST':
         login_and_register(request)
         if 'newCourse' in request.POST:
-            form = CreateCourse(data=request.DATA,
+            form = CreateCourse(data=request.POST,
                                 files=request.FILES)
             form.save()
     form = CreateCourse()
