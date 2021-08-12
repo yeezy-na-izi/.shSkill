@@ -41,7 +41,7 @@
                 <button type="button" class="btn-close" data-mdb-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
-                <form method="POST" enctype="multipart/form-data">
+                <form method="POST" enctype="multipart/form-data" id="formAddCourse">
                     {% csrf_token %}
                     <input type="hidden" name="newCourse"/>
                     <div class="form-outline mb-4">
@@ -96,7 +96,7 @@
                 </form>
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-primary">Добавить</button>
+                <button type="submit" class="btn btn-primary" form="formAddCourse">Добавить</button>
             </div>
         </div>
     </div>
