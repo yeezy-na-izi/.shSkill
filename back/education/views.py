@@ -34,20 +34,22 @@ def home(request):
         return render(request, 'education/home.html', context)
 
 
-def coursesFAQ(request, course_id):
+def unique_course(request, course_id):
     if request.method == 'POST':
         login_and_register(request)
     courses = Course.objects.get(course_id=course_id)
     context = {'courses': courses}
-    return render(request, 'education/coursesfaq.html', context)
+    return render(request, 'education/unique_course.html', context)
 
 
 def courses_list(request):
     if request.method == 'POST':
         login_and_register(request)
         if 'newCourse' in request.POST:
-            form = CreateCourse(data=request.POST,
-                                files=request.FILES)
+            form = CreateCourse(
+                data=request.POST,
+                files=request.FILES
+            )
             form.save()
     form = CreateCourse()
     courses = Course.objects.all()

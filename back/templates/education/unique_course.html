@@ -3,18 +3,15 @@
 {% block content %}
 
 <div class="container">
-    {% for course in courses %}
     <div class="row">
-
         <div class="alert alert-light shadow-5 col-md mt-4 card-animation " role="alert"
              data-mdb-color="light">
             <h3>{{ course }}</h3>
             <p class="mt-2">{{ course.description }}</p>
         </div>
     </div>
-    {% endfor %}
     {% if request.user.is_admin %}
-        <center><a href=""><i class="fas fa-plus-circle fa-2x mb-3 mt-3" style="color: #bf01f4"></i></a></center>
+    <center><a href=""><i class="fas fa-plus-circle fa-2x mb-3 mt-3" style="color: #bf01f4"></i></a></center>
     {% endif %}
 </div>
 
