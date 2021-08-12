@@ -4,12 +4,21 @@ from django.db import migrations, models
 
 
 class Migration(migrations.Migration):
-
     dependencies = [
         ('education', '0006_group_ended'),
     ]
 
     operations = [
+        migrations.AddField(
+            model_name='course',
+            name='photo',
+            field=models.ImageField(default='', upload_to='static/education/course', verbose_name='Фото'),
+            preserve_default=False,
+        ),
+        migrations.RemoveField(
+            model_name='course',
+            name='price',
+        ),
         migrations.AlterField(
             model_name='course',
             name='lessons',

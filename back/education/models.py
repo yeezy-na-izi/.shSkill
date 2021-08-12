@@ -21,6 +21,7 @@ class Lesson(models.Model):
 
     title = models.CharField(verbose_name='Название', max_length=100)
     tasks = models.ManyToManyField(verbose_name='Задачи', to=Task, blank=True)
+    description = models.TextField(verbose_name='Описание')
 
     def __str__(self):
         return self.title

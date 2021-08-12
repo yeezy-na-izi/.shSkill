@@ -37,8 +37,8 @@ def home(request):
 def unique_course(request, course_id):
     if request.method == 'POST':
         login_and_register(request)
-    courses = Course.objects.get(course_id=course_id)
-    context = {'courses': courses}
+    course = Course.objects.get(course_id=course_id)
+    context = {'course': course}
     return render(request, 'education/unique_course.html', context)
 
 

@@ -1,0 +1,71 @@
+<!-- Modal -->
+<div class="modal top fade" id="addCourseModal" tabindex="-1" aria-labelledby="CourseModalLabel" aria-hidden="true"
+     data-mdb-backdrop="true" data-mdb-keyboard="true">
+    <div class="modal-dialog modal-lg  modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="CourseModalLabel">Добавить курс</h5>
+                <button type="button" class="btn-close" data-mdb-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <form method="POST" enctype="multipart/form-data" id="formAddCourse">
+                    {% csrf_token %}
+                    <input type="hidden" name="newCourse"/>
+                    <div class="form-outline mb-4">
+                        <input
+                                type="text"
+                                name="title"
+                                id="titleCourse"
+                                class="form-control"
+                                data-mdb-showcounter="true"
+                                maxlength="40"
+                        />
+                        <label class="form-label" for="titleCourse">Название курса</label>
+                        <div class="form-helper"></div>
+                    </div>
+                    <div class="form-outline mb-4">
+                        <input
+                                type="text"
+                                name="course_id"
+                                id="idCourse"
+                                class="form-control"
+                                data-mdb-showcounter="true"
+                                maxlength="100"
+                        />
+                        <label class="form-label" for="idCourse">Ссылка на курс</label>
+                        <div class="form-helper"></div>
+                    </div>
+                    <div class="form-outline">
+                        <textarea name="description" class="form-control" id="textAreaExample" rows="4"
+                                  maxlength="256"></textarea>
+                        <label class="form-label" for="textAreaExample">Краткое описание</label>
+                    </div>
+
+                    <select name="color" class="form-select mt-4" aria-label="Default select example" id="ColorCourse">
+                        <option value="primary">Синий</option>
+
+                        <option value="secondary">Фиолетовый</option>
+
+                        <option value="success">Зеленый</option>
+
+                        <option value="danger">Красный</option>
+
+                        <option value="warning">Желтый</option>
+
+                        <option value="info">Голубой</option>
+
+                        <option value="light">Прозрачный</option>
+
+                        <option value="dark">Черный</option>
+                    </select>
+                    <label class="form-label mt-4" for="customFile">Иконка для курса</label>
+                    <input name="photo" type="file" class="form-control" id="customFile" accept="image/*"/>
+
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="submit" class="btn btn-primary" form="formAddCourse">Добавить</button>
+            </div>
+        </div>
+    </div>
+</div>
