@@ -1,7 +1,11 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth import logout
-from user.models import Account
+from django.contrib import messages
+
 from education.models import Group
+
+from user.models import Account
+from user.utils import return_correct_phone
 
 
 def profile(request, username):
@@ -23,6 +27,7 @@ def profile(request, username):
     except:
         ended_courses = []
         in_progress_courses = []
+    user.phone = return_correct_phone(user.phone)
     context = {
         'user': user,
         'ended': ended_courses,
@@ -32,5 +37,6 @@ def profile(request, username):
 
 
 def logout_page(request):
+    messages.info(request, f'Вы вышли из аккаунта {request.user}')
     logout(request)
     return redirect('/')

@@ -1,7 +1,18 @@
 from django.shortcuts import render, redirect
+from django.contrib import messages
 from django.contrib.auth import login
+from django.contrib.sites.shortcuts import get_current_site
+from django.urls import reverse
+from django.utils.encoding import force_bytes, force_text
+from django.utils.http import urlsafe_base64_encode, urlsafe_base64_decode
+from django.core.mail import EmailMessage
+
+
 from user.models import Account, Student
 from user.forms import LoginUserForm, CreateUserForm
+from user.utils import token_generator
+
+
 from education.forms import CreateCourse
 from education.models import Course
 
@@ -12,6 +23,7 @@ def login_and_register(request):
         if form.is_valid():
             user = form.get_user()
             login(request, user)
+        messages.success(request, 'Вы успешно вошли')
         return redirect(request.path)
     elif 'register' in request.POST:
         form = CreateUserForm(data=request.POST)
@@ -19,8 +31,19 @@ def login_and_register(request):
             user = form.save()
             student = Student.objects.create(balance=0)
             user.student = student
+            user.is_active = False
+            user_id = urlsafe_base64_encode(force_bytes(user.username))
+            domain = get_current_site(request).domain
+            relative = reverse('activate', kwargs={'user_id': user_id, 'token': token_generator.make_token(user)})
+            activate_url = f'http://{domain}{relative}'
+
+            email_subject = 'Подтверждение почты'
+            email_body = f'Привет, {user.username}, это активация аккаунта, перейди по ссылке чтобы ' \
+                         f'верефицировать свой аккаунт\n{activate_url}'
+            email = EmailMessage(email_subject, email_body, 'noreply@semycolon.com', [user.email], )
+            email.send(fail_silently=False)
+
             user.save()
-            login(request, user)
         return redirect(request.path)
 
 
