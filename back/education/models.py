@@ -49,7 +49,7 @@ class Course(models.Model):
     color = models.CharField(verbose_name='Цвет', max_length=16, choices=colors, default='primary')
     course_id = models.CharField(verbose_name='Курс линк', max_length=100, unique=True)
     photo = models.ImageField(verbose_name='Фото',
-                              upload_to='static/education/course')
+                              upload_to='static/education/course', blank=True)
 
     def __str__(self):
         return self.title

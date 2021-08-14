@@ -8,14 +8,15 @@
 <h1 class="ms-3 mt-5">Курсы</h1>
 
 <div class="container">
-    {% for courses_list in courses %}
+
     <div class="row d-flex justify-content-center">
+        {% for courses_list in courses %}
         {% for course in courses_list %}
-        <div class="card text-white bg-{{ course.color }} mb-3 mt-2 ms-3 me-3" style="max-width: 30rem;">
+        <div class="card text-white bg-{{ course.color }} mb-3 mt-2 ms-3 me-3" style="max-width: 25rem;">
             <div class="card-header">
-                <a class="" href="/courses/{{ course.course_id }}">
+<!--                <a class="" href="/courses/{{ course.course_id }}">-->
                     Курс
-                </a>
+<!--                </a>-->
             </div>
             <div class="card-body">
                 <h5 class="card-title">{{ course.title }}</h5>
@@ -25,8 +26,9 @@
             </div>
         </div>
         {% endfor %}
+        {% endfor %}
     </div>
-    {% endfor %}
+
     {% if request.user.is_admin %}
     <center>
         <a type="button" data-mdb-toggle="modal" data-mdb-target="#addCourseModal">

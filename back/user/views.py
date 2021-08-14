@@ -40,3 +40,8 @@ def logout_page(request):
     messages.info(request, f'Вы вышли из аккаунта {request.user}')
     logout(request)
     return redirect('/')
+
+
+def teachers(request):
+    context = {}
+    return render(request, 'user/teachers.html', context)

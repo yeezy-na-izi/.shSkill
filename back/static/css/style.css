@@ -9,3 +9,38 @@
     width: 100px;
     height: 100px;
 }
+.teacher-card {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+}
+.teacher-card span {
+    position: absolute;
+    top: 0;
+    width: 250px;
+    height: 250px;
+    display:block;
+    background:#000;
+}
+/*.typing-text {
+    font-family: consolas;
+    transition: 0.5s;
+    border-right: 1px solid;
+
+    animation: typing 5s steps(9) infinite;
+}
+.typing-text:hover {
+
+}
+@keyframes typing {
+    0%
+    {
+        width: 0px;
+    }
+    30%
+    {
+        width: 77.47px;
+    }
+}*/

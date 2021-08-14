@@ -2,6 +2,7 @@
     <div class="container-fluid">
         <a class="navbar-brand nav-link" href="/">
             <strong>.shSkills</strong>
+            <!--Count total number of character in '.shSkills' = 9 -->
         </a>
         <button class="navbar-toggler" type="button" data-mdb-toggle="collapse" data-mdb-target="#navbarExample01"
                 aria-controls="navbarExample01" aria-expanded="false" aria-label="Toggle navigation">
@@ -16,7 +17,7 @@
                     <a class="nav-link" href="/courses">Курсы</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="">Учителя</a>
+                    <a class="nav-link" href="/teachers">Учителя</a>
                 </li>
                 {% if request.user.is_admin %}
                 <li class="nav-item">
@@ -28,7 +29,7 @@
             <ul class="navbar-nav d-flex flex-row">
                 {% if not request.user.is_authenticated %}
                 <li class="nav-item me-3 me-lg-0">
-                    <a type="button" class=nav-link" data-mdb-toggle="modal" data-mdb-target="#exampleModal">
+                    <a type="button" class="nav-link" data-mdb-toggle="modal" data-mdb-target="#exampleModal" href="">
                         Вход
                     </a>
                 </li>
