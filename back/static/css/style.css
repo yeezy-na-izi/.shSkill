@@ -24,6 +24,65 @@
     display:block;
     background:#000;
 }
+.lesson-container
+{
+    position: relative;
+    width: 1150px;
+    padding 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+}
+.lesson-container .lesson-card
+{
+    position: relative;
+    width: 300px;
+    height: 420px;
+    background: #fff;
+    margin: 20px;
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 0 15px 25px rgba(0, 0, 0, 0.2);
+    transition: 0.5s;
+}
+.lesson-container .lesson-card .lesson-circle
+{
+    position: relative;
+    width:100%;
+    height:100%;
+    background: #000;
+    clip-path: circle(180px at center 0);
+    text-align: center;
+}
+.lesson-container .lesson-card .lesson-circle h2
+{
+    color: #fff;
+    font-size:4.5em;
+    padding: 20px;
+}
+.lesson-container .lesson-card .lesson-content
+{
+    position: absolute;
+    bottom: 10px;
+    page-break-after: 20px;
+    text-align: center;
+}
+.lesson-container .lesson-card .lesson-content p
+{
+    color: #666;
+}
+.lesson-container .lesson-card .lesson-content a
+{
+    position: relative;
+    display: inline-block;
+    padding: 10px 20px;
+    background: #000;
+    color: #fff;
+    border-radius: 40px;
+    text-decoration: none;
+    margin-top: 20px;
+}
 /*.typing-text {
     font-family: consolas;
     transition: 0.5s;
