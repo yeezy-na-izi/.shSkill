@@ -62,7 +62,7 @@ def unique_course(request, course_id):
         login_and_register(request)
     course = Course.objects.get(course_id=course_id)
     context = {'course': course}
-    return render(request, 'education/unique_course.html', context)
+    return render(request, 'education/unique_course/index.html', context)
 
 
 def courses_list(request):
@@ -83,4 +83,4 @@ def courses_list(request):
         l_courses[-1].append(courses[i])
     context = {'courses': l_courses,
                'form': form}
-    return render(request, 'education/courses.html', context)
+    return render(request, 'education/courses/index.html', context)
