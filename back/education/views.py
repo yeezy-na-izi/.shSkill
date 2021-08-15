@@ -51,10 +51,10 @@ def home(request):
     if request.method == 'POST':
         login_and_register(request)
         context = {}
-        return render(request, 'education/home.html')
+        return render(request, 'education/home/index.html')
     else:
         context = {'form': LoginUserForm}
-        return render(request, 'education/home.html', context)
+        return render(request, 'education/home/index.html', context)
 
 
 def unique_course(request, course_id):

@@ -16,12 +16,9 @@
     </div>
     {% endfor %}
     {% if request.user.is_admin %}
-    <center>
-        <a href="">
-            <i class="fas fa-plus-circle fa-2x mb-3 mt-3" style="color: #bf01f4">
-            </i>
-        </a>
-    </center>
+
+    {% include 'education/includes/unique_course_modal_window.html' %}
+
     {% endif %}
 </div>
 {% endblock %}
