@@ -7,14 +7,12 @@ from django.utils.encoding import force_bytes, force_text
 from django.utils.http import urlsafe_base64_encode, urlsafe_base64_decode
 from django.core.mail import EmailMessage
 
-
 from user.models import Account, Student
 from user.forms import LoginUserForm, CreateUserForm
 from user.utils import token_generator
 
-
 from education.forms import CreateCourse
-from education.models import Course
+from education.models import Course, Lesson
 
 
 def login_and_register(request):
@@ -84,3 +82,9 @@ def courses_list(request):
     context = {'courses': l_courses,
                'form': form}
     return render(request, 'education/courses/index.html', context)
+
+
+def tasks(request, course_id, pk):
+    lesson = Lesson.objects.get(pk=pk)
+    context = {'lesson': lesson}
+    return render(request, 'education/lesson/index.html', context)

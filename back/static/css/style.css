@@ -74,7 +74,7 @@
 .lesson-container
 {
     position: relative;
-    width: 1150px;
+    width: 100%;
     padding 20px;
     display: flex;
     justify-content: center;
@@ -112,7 +112,7 @@
 {
     position: absolute;
     bottom: 10px;
-    page-break-after: 20px;
+    padding: 20px;
     text-align: center;
 }
 .lesson-container .lesson-card .lesson-content p

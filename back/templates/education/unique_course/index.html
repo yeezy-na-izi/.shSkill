@@ -7,8 +7,9 @@
     <p class="mt-2">{{ course.description|linebreaks }}</p>
     {% for lesson in course.lessons.all %}
     <div class="row">
-        <div class="alert alert-light shadow-5 col-md mt-2 card-animation" role="alert" data-mdb-color="light">
-            <h3>{{ lesson }}</h3>
+        <div class="alert alert-light shadow-5 col-md mt-2 card-animation"
+             onclick="window.location='/courses/{{ course.course_id }}/{{ lesson.pk }}';">
+            <h3>{{ forloop.counter }}) {{ lesson }}</h3>
             <p class="mt-2">
                 {{ lesson.description }}
             </p>

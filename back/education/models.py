@@ -7,8 +7,14 @@ class Task(models.Model):
         verbose_name = 'Задача'
         verbose_name_plural = 'Задачи'
 
+    colors = (
+        ('#ffaf00', 'Желтый'),
+        ('#da2268', 'Розовый'),
+        ('#bb02ff', 'Фиолетовый')
+    )
     title = models.CharField(verbose_name='Название', max_length=100)
     description = models.TextField(verbose_name='Условие задачи')
+    color = models.CharField(verbose_name='Цвет', choices=colors, max_length=7)
 
     def __str__(self):
         return self.title

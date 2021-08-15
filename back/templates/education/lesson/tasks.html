@@ -1,0 +1,25 @@
+<center class="mt-5"><h2>Задачи</h2></center>
+<div class="lesson-container">
+    {% for task in lesson.tasks.all %}
+    <div class="lesson-card">
+        <div class="lesson-circle" style="background:{{task.color}}">
+            <h2>
+                {% if forloop.counter > 9 %}
+                {{ forloop.counter }}
+                {% else %}
+                0{{ forloop.counter }}
+                {% endif %}
+            </h2>
+        </div>
+        <div class="lesson-content">
+            <p>
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Facilis consequatur
+                eligendi quisquam doloremque vero ex debitis
+            </p>
+            <a href="#" style="background:{{task.color}}">
+                Задача про пони
+            </a>
+        </div>
+    </div>
+    {% endfor %}
+</div>
