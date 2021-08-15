@@ -12,11 +12,12 @@
     <div class="row d-flex justify-content-center">
         {% for courses_list in courses %}
         {% for course in courses_list %}
-        <div class="card text-white bg-{{ course.color }} mb-3 mt-2 ms-3 me-3" style="max-width: 25rem;">
+        <div class="card text-white bg-{{ course.color }} mb-3 mt-2 ms-3 me-3" style="max-width: 25rem;cursor: pointer;"
+             onclick="window.location='/courses/{{ course.course_id }}';">
             <div class="card-header">
-<!--                <a class="" href="/courses/{{ course.course_id }}">-->
-                    Курс
-<!--                </a>-->
+                <!--                <a class="" href="/courses/{{ course.course_id }}">-->
+                Курс
+                <!--                </a>-->
             </div>
             <div class="card-body">
                 <h5 class="card-title">{{ course.title }}</h5>
