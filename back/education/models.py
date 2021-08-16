@@ -68,6 +68,7 @@ class Course(models.Model):
     course_id = models.CharField(verbose_name='Курс линк', max_length=100, unique=True)
     photo = models.ImageField(verbose_name='Фото',
                               upload_to='static/education/course', blank=True)
+    show = models.BooleanField(verbose_name='Показать на странице')
 
     def __str__(self):
         return self.title

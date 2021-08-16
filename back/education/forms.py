@@ -1,5 +1,5 @@
 from django import forms
-from .models import Course, Lesson
+from .models import Course, Lesson, Task
 
 
 class CreateCourse(forms.ModelForm):
@@ -10,7 +10,8 @@ class CreateCourse(forms.ModelForm):
             'course_id',
             'description',
             'photo',
-            'color'
+            'color',
+            'show'
         ]
 
 
@@ -22,4 +23,15 @@ class CreateLesson(forms.ModelForm):
             'description',
             'price',
             'show'
+        ]
+
+
+class CreateTask(forms.ModelForm):
+    class Meta:
+        model = Task
+        fields = [
+            'title',
+            'description',
+            'color',
+
         ]

@@ -11,7 +11,7 @@ from user.models import Account, Student
 from user.forms import LoginUserForm, CreateUserForm
 from user.utils import token_generator
 
-from education.forms import CreateCourse, CreateLesson
+from education.forms import CreateCourse, CreateLesson, CreateTask
 from education.models import Course, Lesson
 
 
@@ -84,7 +84,7 @@ def courses_list(request):
             else:
                 messages.error(request, 'Что-то пошло не так')
     form = CreateCourse()
-    courses = Course.objects.all()
+    courses = Course.objects.order_by('pk')
     l_courses = []
     for i in range(len(courses)):
         if i % 2 == 0:
@@ -97,5 +97,18 @@ def courses_list(request):
 
 def tasks(request, course_id, pk):
     lesson = Lesson.objects.get(pk=pk)
+    if request.method == 'POST':
+        login_and_register(request)
+        if 'newTask' in request.POST:
+            form = CreateTask(
+                data=request.POST
+
+            )
+            if form.is_valid():
+                x = form.save()
+                lesson.tasks.add(x)
+                lesson.save()
+            else:
+                messages.error(request, 'Что-то пошло не так')
     context = {'lesson': lesson}
     return render(request, 'education/lesson/index.html', context)

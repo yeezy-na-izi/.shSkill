@@ -1,0 +1,50 @@
+<center>
+    <a type="button" data-mdb-toggle="modal" data-mdb-target="#addTaskModal">
+        <i class="fas fa-plus-circle fa-2x mb-3 mt-3" style="color: #bf01f4">
+        </i>
+    </a>
+</center>
+<div class="modal top fade" id="addTaskModal" tabindex="-1" aria-labelledby="TaskModalLabel" aria-hidden="true"
+     data-mdb-backdrop="true" data-mdb-keyboard="true">
+    <div class="modal-dialog modal-lg  modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="TaskModalLabel">Добавить задачу</h5>
+                <button type="button" class="btn-close" data-mdb-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <form method="POST" enctype="multipart/form-data" id="formAddTask">
+                    {% csrf_token %}
+                    <input type="hidden" name="newTask"/>
+                    <div class="form-outline mb-4">
+                        <input
+                                type="text"
+                                name="title"
+                                id="titleCourse"
+                                class="form-control"
+                                data-mdb-showcounter="true"
+                                maxlength="100"
+                        />
+                        <label class="form-label" for="titleCourse">Название задачи</label>
+                        <div class="form-helper"></div>
+                    </div>
+
+                    <div class="form-outline mb-4">
+                        <textarea name="description" class="form-control" id="textAreaExample" rows="4"></textarea>
+                        <label class="form-label" for="textAreaExample">Краткое описание</label>
+                    </div>
+
+                    <select name="color" class="form-select mt-4" aria-label="Default select example" id="ColorTask">
+                        <option value="#4169E1">Легкий уровень</option>
+                        <option value="#ffaf00">Средний уровень</option>
+                        <option value="#bb02ff">Сложный уровень</option>
+                    </select>
+
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="submit" class="btn btn-primary" form="formAddTask">Добавить</button>
+            </div>
+        </div>
+    </div>
+</div>
