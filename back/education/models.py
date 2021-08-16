@@ -8,9 +8,9 @@ class Task(models.Model):
         verbose_name_plural = 'Задачи'
 
     colors = (
-        ('#ffaf00', 'Желтый'),
-        ('#da2268', 'Розовый'),
-        ('#bb02ff', 'Фиолетовый')
+        ('#4169E1', 'Легкий уровень'),
+        ('#ffaf00', 'Средний уровень'),
+        ('#bb02ff', 'Сложный уровень'),
     )
     title = models.CharField(verbose_name='Название', max_length=100)
     description = models.TextField(verbose_name='Условие задачи')
@@ -28,6 +28,7 @@ class Lesson(models.Model):
     title = models.CharField(verbose_name='Название', max_length=100)
     tasks = models.ManyToManyField(verbose_name='Задачи', to=Task, blank=True)
     description = models.TextField(verbose_name='Описание')
+    price = models.FloatField(verbose_name='Цена', default=1000)
 
     def __str__(self):
         return self.title
