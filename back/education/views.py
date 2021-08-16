@@ -11,7 +11,7 @@ from user.models import Account, Student
 from user.forms import LoginUserForm, CreateUserForm
 from user.utils import token_generator
 
-from education.forms import CreateCourse
+from education.forms import CreateCourse, CreateLesson
 from education.models import Course, Lesson
 
 
@@ -56,9 +56,17 @@ def home(request):
 
 
 def unique_course(request, course_id):
+    course = Course.objects.get(course_id=course_id)
     if request.method == 'POST':
         login_and_register(request)
-    course = Course.objects.get(course_id=course_id)
+        if 'newLesson' in request.POST:
+            form = CreateLesson(data=request.POST)
+            if form.is_valid():
+                x = form.save()
+                course.lessons.add(x)
+                course.save()
+            else:
+                messages.error(request, 'Что-то пошло не так')
     context = {'course': course}
     return render(request, 'education/unique_course/index.html', context)
 
@@ -71,7 +79,10 @@ def courses_list(request):
                 data=request.POST,
                 files=request.FILES
             )
-            form.save()
+            if form.is_valid():
+                form.save()
+            else:
+                messages.error(request, 'Что-то пошло не так')
     form = CreateCourse()
     courses = Course.objects.all()
     l_courses = []

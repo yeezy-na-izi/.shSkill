@@ -6,6 +6,7 @@
     <h3>{{ course }}</h3>
     <p class="mt-2">{{ course.description|linebreaks }}</p>
     {% for lesson in course.lessons.all %}
+    {% if lesson.show %}
     <div class="row">
         <div class="alert alert-light shadow-5 col-md mt-2 card-animation"
              onclick="window.location='/courses/{{ course.course_id }}/{{ lesson.pk }}';">
@@ -15,6 +16,17 @@
             </p>
         </div>
     </div>
+    {% elif request.user.is_admin %}
+    <div class="row">
+        <div class="alert alert-light shadow-5 col-md mt-2 card-animation"
+             onclick="window.location='/courses/{{ course.course_id }}/{{ lesson.pk }}';">
+            <h3>{{ forloop.counter }}) {{ lesson }} (Урок закрыт для просмотра) </h3>
+            <p class="mt-2">
+                {{ lesson.description }}
+            </p>
+        </div>
+    </div>
+    {% endif %}
     {% endfor %}
     {% if request.user.is_admin %}
 

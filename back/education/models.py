@@ -39,6 +39,7 @@ class Lesson(models.Model):
     tasks = models.ManyToManyField(verbose_name='Задачи', to=Task, blank=True)
     description = models.TextField(verbose_name='Описание')
     price = models.FloatField(verbose_name='Цена', default=1000)
+    show = models.BooleanField(verbose_name='Показать на странице', default=True)
 
     def __str__(self):
         return self.title
