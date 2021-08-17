@@ -2,13 +2,22 @@ from django.db import models
 from user.models import Student, Teacher
 
 
+class MaterialBlocks(models.Model):
+    class Meta:
+        verbose_name = 'Блок материала'
+
+    title = models.CharField(max_length=256)
+    block = models.FileField(verbose_name='Информация блока', upload_to='static/education/course/')
+
+
 class Material(models.Model):
     class Meta:
         verbose_name = 'Материал урока'
         verbose_name_plural = 'Материалы урока'
 
     title = models.CharField(verbose_name='Название', max_length=64)
-    file = models.FileField(verbose_name='Файл', upload_to='static/education/materials')
+    blocks = models.ManyToManyField(verbose_name='Блоки', to=MaterialBlocks, blank=True)
+    annotations = models.TextField(verbose_name='Аннотация', blank=True)
 
 
 class Task(models.Model):
@@ -35,7 +44,7 @@ class Lesson(models.Model):
         verbose_name_plural = 'Уроки'
 
     title = models.CharField(verbose_name='Название', max_length=100)
-    materials = models.ManyToManyField(verbose_name='Материалы', to=Material, blank=True)
+    materials = models.ForeignKey(verbose_name='Материал', to=Material, blank=True, on_delete=models.CASCADE, null=True)
     tasks = models.ManyToManyField(verbose_name='Задачи', to=Task, blank=True)
     description = models.TextField(verbose_name='Описание')
     price = models.FloatField(verbose_name='Цена', default=1000)
