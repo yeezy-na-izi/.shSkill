@@ -2,17 +2,17 @@
 {% if ended or not_ended %}
 <hr class="my-5"/>
 <div class="row">
-    <h2 class="ms-4">
+    <h2 class="ms-4" style="width:80%;">
         Твои курсы:
     </h2>
     {% if not_ended %}
-    <h3 class="ms-5">
+    <h3 class="ms-5" style="width:80%;">
         В процессе:
     </h3>
     {% for courses_list in not_ended %}
     <div class="row d-flex justify-content-center">
         {% for course in courses_list %}
-        <div class="card text-white bg-{{ course.color }} mb-3 mt-2 ms-3 me-3" style="max-width: 30rem;">
+        <div class="card text-white bg-{{ course.color }} mb-3 mt-2" style="max-width: 30rem;">
             <div class="card-header">Курс</div>
             <div class="card-body">
                 <h5 class="card-title">{{ course.title }}</h5>

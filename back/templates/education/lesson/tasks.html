@@ -25,4 +25,6 @@
     </div>
     {% endfor %}
 </div>
+{% if request.user.is_admin %}
 {% include 'education/lesson/task_modal_window.html' %}
+{% endif %}
