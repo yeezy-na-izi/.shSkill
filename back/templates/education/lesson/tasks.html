@@ -1,6 +1,7 @@
+{% load custom_tags %}
 <center class="mt-5"><h2>Задачи</h2></center>
 <div class="lesson-container">
-    {% for task in lesson.tasks.all %}
+    {% for task in lesson.tasks|my_sort:'pk' %}
     <div class="lesson-card">
         <div class="lesson-circle" style="background:{{task.color}}">
             <h2>
@@ -13,11 +14,11 @@
         </div>
         <div class="lesson-content">
             <p>
-                doloremque vero ex debitis doloremque vero ex debitis
-                Lorem ipsum dolor sit amet coxnsectetur adipisicing elit. Facilis consequatur
-                eligendi quisquam doloremque vero
+                {% autoescape off %}
+                {{ task.description|split_to:128|linebreaksbr }}
+                {% endautoescape %}
             </p>
-            <a href="#" style="background:{{ task.color }}">
+            <a href="#" style="background:{{ task.color }}" class="lesson-button">
                 {{ task.title }}
             </a>
         </div>

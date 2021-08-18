@@ -1,7 +1,6 @@
 from django.shortcuts import render, redirect
 from django.contrib import messages
 
-
 from education.forms import CreateCourse, CreateLesson, CreateTask
 from education.models import Course, Lesson
 from user.views import login_and_register
@@ -61,6 +60,8 @@ def tasks(request, course_id, pk):
     lesson = Lesson.objects.get(pk=pk)
     if request.method == 'POST':
         login_and_register(request)
+        if 'newMaterial' in request.POST:
+            pass
         if 'newTask' in request.POST:
             form = CreateTask(
                 data=request.POST
@@ -74,3 +75,12 @@ def tasks(request, course_id, pk):
                 messages.error(request, 'Что-то пошло не так')
     context = {'lesson': lesson}
     return render(request, 'education/lesson/index.html', context)
+
+
+def materials(request, course_id, pk):
+    lesson = Lesson.objects.get(pk=pk)
+    material = lesson.materials
+    if request.method == 'POST':
+        login_and_register(request),
+    context = {'material': material}
+    return render(request, 'education/material/index.html', context)
