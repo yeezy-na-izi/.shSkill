@@ -1,30 +1,15 @@
-.teacher-card-animation:hover {
+.card-animation:hover {
     width: 100px;
     height: 100px;
     background: grey;
     transition: all ease-in 600ms;
-
 }
-.teacher-card-animation {
+.card-animation {
     width: 100px;
     height: 100px;
 }
 
-
-.teacher-card .glass::before
-{
-    content: "";
-    position: absolute;
-    top: 0;
-    left: -50%;
-    width: 100%;
-    height: 100%;
-    background: rgba(255, 255, 255, 0.2);
-    pointer-events: none;
-    transform: skewX(345deg);
-}
 @import url('https://fonts.googleapis.com/css?family=Poppins:100,200,300,400,500,600,700,800,900');
-
 
 .teacher-container {
   max-width: 1200px;
