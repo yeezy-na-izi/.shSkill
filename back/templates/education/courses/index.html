@@ -8,45 +8,63 @@
 {% block content %}
 <div class="container mt-4">
     <h1 class="ms-3">Курсы</h1>
-
     <div class="row d-flex justify-content-center">
-        {% for courses_list in courses %}
-        {% for course in courses_list %}
+        {% for course in courses %}
         {% if course.show %}
         <div class="card text-white bg-{{ course.color }} mb-3 mt-2 ms-3 me-3" style="max-width: 25rem;cursor: pointer;"
              onclick="window.location='/courses/{{ course.course_id }}';">
             <div class="card-header">
+                {% if request.user.is_admin %}
+                <a style="margin-inline-end: 3px; writing-mode: horizontal-tb;" data-mdb-toggle="modal"
+                   data-mdb-target="#fixCourse{{ course.pk }}">
+                    ⚙
+                </a>
+                <div class="modal top fade" id="fixCourse{{ course.pk }}" tabindex="-1"
+                     aria-labelledby="CourseModalLabel"
+                     aria-hidden="true"
+                     data-mdb-backdrop="true" data-mdb-keyboard="true">
+                </div>
+                {% endif %}
                 Курс
             </div>
             <div class="card-body">
                 <h5 class="card-title">{{ course.title }}</h5>
-                <p class="car d-text">
+                <p class="card-text">
                     {{ course.description | linebreaks}}
                 </p>
             </div>
         </div>
         {% elif request.user.is_admin %}
-        <div class="card text-white bg-{{ course.color }} mb-3 mt-2 ms-3 me-3" style="max-width: 25rem;cursor: pointer;"
+        <div class="card text-white bg-{{ course.color }} mb-3 mt-2 ms-3 me-3"
+             style="max-width: 25rem;cursor: pointer;"
              onclick="window.location='/courses/{{ course.course_id }}';">
             <div class="card-header">
+                <a style="margin-inline-end: 3px; writing-mode: horizontal-tb;" data-mdb-toggle="modal"
+                   data-mdb-target="#fixCourse{{ course.pk }}">
+                    ⚙
+                </a>
+                <div class="modal top fade" id="fixCourse{{ course.pk }}" tabindex="-1"
+                     aria-labelledby="CourseModalLabel"
+                     aria-hidden="true"
+                     data-mdb-backdrop="true" data-mdb-keyboard="true">
+                </div>
                 Курс (закрыт для просмотра)
             </div>
             <div class="card-body">
                 <h5 class="card-title">{{ course.title }}</h5>
-                <p class="car d-text">
+                <p class="card-text">
                     {{ course.description | linebreaks}}
                 </p>
             </div>
         </div>
         {% endif %}
         {% endfor %}
-        {% endfor %}
     </div>
 </div>
 
 {% if request.user.is_admin %}
 
-{% include 'education/courses/modal_window.html' %}
+{% include 'education/courses/add_course.html' %}
 
 {% endif %}
 

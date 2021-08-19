@@ -46,12 +46,8 @@ def courses_list(request):
                 messages.error(request, 'Что-то пошло не так')
     form = CreateCourse()
     courses = Course.objects.order_by('pk')
-    l_courses = []
-    for i in range(len(courses)):
-        if i % 2 == 0:
-            l_courses.append([])
-        l_courses[-1].append(courses[i])
-    context = {'courses': l_courses,
+
+    context = {'courses': courses,
                'form': form}
     return render(request, 'education/courses/index.html', context)
 
