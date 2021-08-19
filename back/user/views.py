@@ -23,7 +23,9 @@ def login_and_register(request):
         if form.is_valid():
             user = form.get_user()
             login(request, user)
-        messages.success(request, 'Вы успешно вошли')
+            messages.success(request, 'Вы успешно вошли')
+        else:
+            messages.error(request, 'Неверные данные!')
         return redirect(request.path)
     elif 'register' in request.POST:
         form = CreateUserForm(data=request.POST)
