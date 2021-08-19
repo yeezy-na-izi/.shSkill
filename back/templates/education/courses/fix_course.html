@@ -5,9 +5,9 @@
             <button type="button" class="btn-close" data-mdb-dismiss="modal" aria-label="Close"></button>
         </div>
         <div class="modal-body">
-            <form method="POST" enctype="multipart/form-data" id="formAddCourse">
+            <form method="POST" enctype="multipart/form-data" id="formFixCourse">
                 {% csrf_token %}
-                <input type="hidden" name="newCourse"/>
+                <input type="hidden" name="fixCourse" value="{{ course.pk }}"/>
                 <div class="form-outline mb-4">
                     <input
                             type="text"
@@ -36,26 +36,26 @@
                 </div>
                 <div class="form-outline">
                         <textarea name="description" class="form-control" id="textAreaExample" rows="4"
-                                  maxlength="256">{{ course.description}</textarea>
+                                  maxlength="256">{{ course.description}}</textarea>
                     <label class="form-label" for="textAreaExample">Краткое описание</label>
                 </div>
 
                 <select name="color" class="form-select mt-4" aria-label="Default select example" id="ColorCourse">
-                    <option value="primary" {{ if }}{{ endif }}>Синий</option>
+                    <option value="primary" {% if course.color == 'primary' %} selected {% endif %}>Синий</option>
 
-                    <option value="secondary">Фиолетовый</option>
+                    <option value="secondary" {% if course.color == 'secondary' %} selected {% endif %}>Фиолетовый</option>
 
-                    <option value="success">Зеленый</option>
+                    <option value="success" {% if course.color == 'success' %} selected {% endif %}>Зеленый</option>
 
-                    <option value="danger">Красный</option>
+                    <option value="danger" {% if course.color == 'danger' %} selected {% endif %}>Красный</option>
 
-                    <option value="warning">Желтый</option>
+                    <option value="warning" {% if course.color == 'warning' %} selected {% endif %}>Желтый</option>
 
-                    <option value="info">Голубой</option>
+                    <option value="info" {% if course.color == 'info' %} selected {% endif %}>Голубой</option>
 
-                    <option value="light">Прозрачный</option>
+                    <option value="light" {% if course.color == 'light' %} selected {% endif %}>Прозрачный</option>
 
-                    <option value="dark">Черный</option>
+                    <option value="dark" {% if course.color == 'dark' %} selected {% endif %}>Черный</option>
                 </select>
                 <label class="form-label mt-4" for="customFile">Иконка для курса (Не обязательна)</label>
                 <input name="photo" type="file" class="form-control mb-4" id="customFile" accept="image/*"/>
@@ -66,8 +66,9 @@
                             type="checkbox"
                             value=""
                             id="flexCheckDefault"
-                    />
-                    <label class="form-check-label" for="flexCheckDefault">
+                            {% if course.show %} checked {% endif %}
+                     />
+                    <label class="form-check-label" for="flexCheckDefault" style="color: black">
                         Показывать?
                     </label>
                 </div>
@@ -75,7 +76,7 @@
             </form>
         </div>
         <div class="modal-footer">
-            <button type="submit" class="btn btn-primary" form="formAddCourse">Добавить</button>
+            <button type="submit" class="btn btn-primary" form="formFixCourse">Добавить</button>
         </div>
     </div>
 </div>

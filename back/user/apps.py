@@ -6,3 +6,4 @@ class UserConfig(AppConfig):
     name = 'user'
     verbose_name = 'Люди и группы'
 
+

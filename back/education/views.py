@@ -44,6 +44,19 @@ def courses_list(request):
                 form.save()
             else:
                 messages.error(request, 'Что-то пошло не так')
+        elif 'fixCourse' in request.POST:
+            course = Course.objects.get(pk=request.POST['fixCourse'])
+            course.title = request.POST['title']
+            course.course_id = request.POST['course_id']
+            course.description = request.POST['description']
+            course.color = request.POST['color']
+            if request.FILES:
+                course.photo = request.FILES['photo']
+            if 'show' in request.POST:
+                course.show = True
+            else:
+                course.show = False
+            course.save()
     form = CreateCourse()
     courses = Course.objects.order_by('pk')
 
