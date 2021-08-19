@@ -1,11 +1,11 @@
-.card-animation:hover {
+.teacher-card-animation:hover {
     width: 100px;
     height: 100px;
     background: grey;
     transition: all ease-in 600ms;
 
 }
-.card-animation {
+.teacher-card-animation {
     width: 100px;
     height: 100px;
 }
@@ -26,7 +26,7 @@
 @import url('https://fonts.googleapis.com/css?family=Poppins:100,200,300,400,500,600,700,800,900');
 
 
-.container {
+.teacher-container {
   max-width: 1200px;
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
@@ -34,7 +34,7 @@
   margin: 0 auto;
 }
 
-.container .card {
+.teacher-container .teacher-card {
   position: relative;
   width: 300px;
   height: 400px;
@@ -43,7 +43,7 @@
   text-shadow: 0 15px 60px rgba(0, 0, 0, .5);
 }
 
-.container .card .face {
+.teacher-container .teacher-card .teacher-face {
   position: absolute;
   bottom: 0;
   left: 0;
@@ -54,38 +54,38 @@
   align-items: center;
 }
 
-.container .card .face.face1 {
+.teacher-container .teacher-card .teacher-face.teacher-face1{
   box-sizing: border-box;
   padding: 20px;
 }
 
-.container .card .face.face1 h2 {
+.teacher-container .teacher-card .teacher-face.teacher-face1 h2 {
   margin: 0;
   padding: 0;
 }
 
-.container .card .face.face2 {
+.teacher-container .teacher-card .teacher-face.teacher-face2 {
   background: #111;
   transition: .5s;
 }
 
-.container .card:first-child .face.face2 {
+.teacher-container .teacher-card:first-child .teacher-face.teacher-face2 {
   background: #000;
 }
 
-.container .card:nth-child(2) .face.face2 {
+.teacher-container .teacher-card:nth-child(2) .teacher-face.teacher-face2 {
   background: #000;
 }
 
-.container .card:last-child .face.face2 {
+.teacher-container .teacher-card:last-child .teacher-face.teacher-face2 {
   background: #000;
 }
 
-.container .card:hover .face.face2 {
+.teacher-container .teacher-card:hover .teacher-face.teacher-face2 {
   height: 60px;
 }
 
-.container .card .face.face2::before {
+.teacher-container .teacher-card .teacher-face.teacher-face ::before {
   content: '';
   position: absolute;
   top: 0;
@@ -95,7 +95,7 @@
   background: rgba(255, 255, 255, .1);
 }
 
-.container .card .face.face2 h2 {
+.teacher-container .teacher-card .teacher-face.teacher-face2 h2 {
   margin: 0;
   padding: 0;
   font-size: 10em;
@@ -104,7 +104,7 @@
   text-shadow: 0 2px 5px rgba(0, 0, 0, .2);
 }
 
-.container .card:hover .face.face2 h2 {
+.teacher-container .teacher-card:hover .teacher-face.teacher-face2 h2 {
   font-size: 2em;
 }
 
