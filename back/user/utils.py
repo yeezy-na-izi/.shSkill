@@ -24,4 +24,11 @@ def return_correct_phone(phone: str):
     return clearPhone
 
 
+def is_correctly_email(email: str):
+    correctMail = re.findall(r"[\w\.]+@\w+\.\w+", email)
+    if not correctMail:
+        return False
+    return True
+
+
 token_generator = AppTokenGenerator()
