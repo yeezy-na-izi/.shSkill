@@ -1,5 +1,8 @@
 from django.contrib.auth.tokens import PasswordResetTokenGenerator
+from django.contrib import messages
 from six import text_type
+
+import re
 
 
 class AppTokenGenerator(PasswordResetTokenGenerator):
@@ -7,16 +10,18 @@ class AppTokenGenerator(PasswordResetTokenGenerator):
         return text_type(user.is_active) + text_type(user.username) + text_type(timestamp)
 
 
-def return_correct_phone(phone):
-    phone = str(phone)
-    if phone:
-        if phone[0] == '9':
-            phone = '+7' + phone
+def return_correct_phone(phone: str):
+    clearPhone = "".join(re.findall(r"[\+0-9]", phone))
+
+    if clearPhone:
+        clearPhone = clearPhone[0] + clearPhone[1:].replace("+", "")
+        if clearPhone[0] == '9':
+            clearPhone = '+7' + clearPhone
         elif phone[0] == '8':
-            phone = '+7' + phone[1:]
-        elif phone[0] == '7':
-            phone = '+' + phone
-    return phone
+            clearPhone = '+7' + clearPhone[1:]
+        elif clearPhone[0] == '7':
+            clearPhone = '+' + clearPhone
+    return clearPhone
 
 
 token_generator = AppTokenGenerator()
