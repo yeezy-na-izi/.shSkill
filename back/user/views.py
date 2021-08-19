@@ -41,11 +41,11 @@ def login_and_register(request):
 
             email_subject = 'Подтверждение почты'
             email_body = f'Привет, {user.username}, это активация аккаунта, перейди по ссылке чтобы ' \
-                         f'верефицировать свой аккаунт\n{activate_url}'
+                         f'верифицировать свой аккаунт\n{activate_url}'
             email = EmailMessage(email_subject, email_body, 'noreply@semycolon.com', [user.email], )
             try:
                 email.send(fail_silently=False)
-                messages.success(request, 'На почту пришло письмо, перейдите по ссылке и активруйте аккаунт')
+                messages.success(request, 'На почту пришло письмо, перейдите по ссылке и активируйте аккаунт')
             except:
                 messages.error(request, 'Что-то пошло не так')
             user.save()
@@ -62,7 +62,7 @@ def verification_email(request, user_id, token):
         if token_generator.check_token(user, token) and not user.is_active:
             user.is_active = True
             user.save()
-            messages.success(request, 'Аккаунт успешко активирован')
+            messages.success(request, 'Аккаунт успешно активирован')
             return redirect('/')
         messages.error(request, 'Аккаунт по каким-то причинам не был активирован')
         return redirect('/')
