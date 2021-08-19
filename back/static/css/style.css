@@ -145,6 +145,19 @@
     text-decoration: none;
     margin-top: 20px;
 }
+.image-container
+{
+    width: 90%;
+
+}
+.image-container img{
+    position: relative;
+    max-width: 100%;
+}
+
+
+
+
 /*.typing-text {
     font-family: consolas;
     transition: 0.5s;

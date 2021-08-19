@@ -31,7 +31,7 @@
             </a>
         </div>
         {% if request.user == user %}
-        {% include 'user/includes/profile_settings.html' %}
+        {% include 'user/profile/settings.html' %}
         {% if user.student %}
         <a href="" class="btn btn-success mb-4 gx-5 mt-4">Пополнить баланс</a>
         {% endif %}

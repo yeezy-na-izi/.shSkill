@@ -1,0 +1,80 @@
+<a
+        type='button'
+        class="btn btn-primary mb-4 gx-5 mt-4"
+        data-mdb-toggle="modal"
+        data-mdb-target="#exampleModal">
+    Настройки
+</a>
+<div
+        class="modal fade mt-5"
+        id="exampleModal"
+        tabindex="-1"
+        aria-labelledby="exampleModalLabel"
+        aria-hidden="true"
+>
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Настройки</h5>
+                <button
+                        type="button"
+                        class="btn-close"
+                        data-mdb-dismiss="modal"
+                        aria-label="Close"
+                ></button>
+            </div>
+            <div class="modal-body">
+                <form method="POST" enctype="multipart/form-data" id="formSettings">
+                    {% csrf_token %}
+                    <input type="hidden" name="settings">
+                    <div class="form-outline mb-4">
+                        <input type="text" id="signonname" class="form-control" name="first_name"
+                               value="{{ user.first_name }}" required/>
+                        <label for="signonname" class="form-label" style="margin-left: 0px;">
+                            Твое имя
+                        </label>
+                        <div class="form-notch">
+                            <div class="form-notch-leading" style="width: 9px;"></div>
+                            <div class="form-notch-middle" style="width: 68.8px;"></div>
+                            <div class="form-notch-trailing"></div>
+                        </div>
+                    </div>
+                    <div class="form-outline mb-4">
+                        <input type="text" id="signonsurname" class="form-control" name="last_name"
+                               value="{{ user.last_name }}" required/>
+                        <label for="signonname" class="form-label" style="margin-left: 0px;">
+                            Твоя фамилия
+                        </label>
+                        <div class="form-notch">
+                            <div class="form-notch-leading" style="width: 9px;"></div>
+                            <div class="form-notch-middle" style="width: 68.8px;"></div>
+                            <div class="form-notch-trailing"></div>
+                        </div>
+                    </div>
+                    <div class="form-outline mb-4">
+                        <input type="tel" id="phone" class="form-control" name="phone"
+                               value="{{ user.phone }}" data-mdb-toggle="tooltip"
+                               data-mdb-placement="bottom"
+                               title="+7912-345-67-89">
+                        <label for="phone" class="form-label" style="margin-left: 0px;">
+                            Телефон
+                        </label>
+                        <div class="form-notch">
+                            <div class="form-notch-leading" style="width: 9px;"></div>
+                            <div class="form-notch-middle" style="width: 68.8px;"></div>
+                            <div class="form-notch-trailing"></div>
+                        </div>
+                    </div>
+                    <div class="form-outline">
+                        <textarea name="about_me" class="form-control" id="textAreaExample"
+                                  rows="4">{{ user.about_me }}</textarea>
+                        <label class="form-label" for="textAreaExample">О себе</label>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="submit" class="btn btn-primary" form="formSettings">Сохранить изменения</button>
+            </div>
+        </div>
+    </div>
+</div>

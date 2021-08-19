@@ -9,41 +9,38 @@
     <h3 class="ms-5" style="width:80%;">
         В процессе:
     </h3>
-    {% for courses_list in not_ended %}
     <div class="row d-flex justify-content-center">
-        {% for course in courses_list %}
-        <div class="card text-white bg-{{ course.color }} mb-3 mt-2" style="max-width: 30rem;">
+        {% for group in not_ended %}
+        <div class="card text-white bg-{{ group.course.color }} mb-3 mt-2" style="max-width: 30rem;">
             <div class="card-header">Курс</div>
             <div class="card-body">
-                <h5 class="card-title">{{ course.title }}</h5>
+                <h5 class="card-title">{{ group.course.title }}</h5>
                 <div class="card-text">
-                    {{ course.description | linebreaks}}
+                    {{ group.course.description | linebreaks}}
                 </div>
             </div>
         </div>
         {% endfor %}
     </div>
-    {% endfor %}
     {% endif %}
     {% if ended %}
     <h3 class="ms-5">
         Законченные:
     </h3>
-    {% for courses_list in ended %}
+
     <div class="row d-flex justify-content-center">
-        {% for course in courses_list %}
-        <div class="card text-white bg-{{ course.color }} mb-3 mt-2 ms-3 me-3" style="max-width: 30rem;">
+        {% for group in ended %}
+        <div class="card text-white bg-{{ group.course.color }} mb-3 mt-2 ms-3 me-3" style="max-width: 30rem;">
             <div class="card-header">Курс</div>
             <div class="card-body">
-                <h5 class="card-title">{{ course.title }}</h5>
+                <h5 class="card-title">{{ group.course.title }}</h5>
                 <div class="card-text">
-                    {{ course.description | linebreaks}}
+                    {{ group.course.description | linebreaks}}
                 </div>
             </div>
         </div>
         {% endfor %}
     </div>
-    {% endfor %}
     {% endif %}
 </div>
 {% endif %}

@@ -73,30 +73,30 @@ def verification_email(request, user_id, token):
 
 def profile(request, username):
     user = Account.objects.get(username=username)
-    try:
-        student = user.student
-        ended_courses_l = Group.objects.filter(users=student, ended=True)
-        ended_courses = []
-        for i in range(len(ended_courses_l)):
-            if i % 2 == 0:
-                ended_courses.append([])
-            ended_courses[-1].append(ended_courses_l[i].course)
-        in_progress_courses_l = Group.objects.filter(users=student, ended=False)
-        in_progress_courses = []
-        for i in range(len(in_progress_courses_l)):
-            if i % 2 == 0:
-                in_progress_courses.append([])
-            in_progress_courses[-1].append(in_progress_courses_l[i].course)
-    except:
-        ended_courses = []
-        in_progress_courses = []
+    ended_courses = []
+    in_progress_courses = []
+    if request.method == 'POST':
+        login_and_register(request)
+        if 'settings' in request.POST:
+            user.first_name = request.POST['first_name']
+            user.last_name = request.POST['last_name']
+            user.phone = request.POST['phone']
+            user.about_me = request.POST['about_me']
+            user.save()
+    if request.user == user:
+        try:
+            student = user.student
+            ended_courses = Group.objects.filter(users=student, ended=True)
+            in_progress_courses = Group.objects.filter(users=student, ended=False)
+        except Exception:
+            pass
     user.phone = return_correct_phone(user.phone)
     context = {
         'user': user,
         'ended': ended_courses,
         'not_ended': in_progress_courses
     }
-    return render(request, 'user/profile.html', context)
+    return render(request, 'user/profile/index.html', context)
 
 
 def logout_page(request):
