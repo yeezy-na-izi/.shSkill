@@ -4,57 +4,23 @@
 {% endblock %}
 {% block content %}
 <div class="teacher-container">
+    {% for teacher in teachers %}
     <div class="teacher-card">
         <div class="teacher-face teacher-face1">
             <div class="content">
                 <h2>
-                    Lorem ipsum dolor, sit amet
+                    {{ teacher }}
                 </h2>
                 <p>
-                    consectetur adipisicing elit. Hic neque quam harum consequatur consectetur id porro in, ratione esse
-                    dolor
-                    ex eos perspiciatis architecto laborum vero! Eaque inventore illum iusto?
+                    {{ teacher.about_me }}
                 </p>
             </div>
         </div>
         <div class="teacher-face teacher-face2">
-            <h2>01</h2>
         </div>
     </div>
+    {% endfor %}
 
-    <div class="teacher-card">
-        <div class="teacher-face teacher-face1">
-            <div class="content">
-                <h2>
-                    Lorem ipsum dolor, sit amet
-                </h2>
-                <p>
-                    consectetur adipisicing elit. Hic neque quam harum consequatur consectetur id porro in, ratione esse
-                    dolor
-                    ex eos perspiciatis architecto laborum vero! Eaque inventore illum iusto?
-                </p>
-            </div>
-        </div>
-        <div class="teacher-face teacher-face2">
-            <h2>02</h2>
-        </div>
-    </div>
-
-    <div class="teacher-card">
-        <div class="teacher-face teacher-face1">
-            <div class="content">
-                <h2>
-                    Водопьянов Виталий
-                </h2>
-                <p>
-                    Выпускник Яндекс.Лицея, Основатель проекта .shSkill
-                </p>
-            </div>
-        </div>
-        <div class="teacher-face teacher-face2">
-            <h2>03</h2>
-        </div>
-    </div>
 
 </div>
 {% endblock %}

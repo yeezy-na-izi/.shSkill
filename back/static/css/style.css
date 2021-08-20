@@ -55,8 +55,11 @@
   transition: .5s;
 }
 
-.teacher-container .teacher-card:first-child .teacher-face.teacher-face2 {
-  background-image:url(https://st2.depositphotos.com/1048902/9184/i/600/depositphotos_91840332-stock-photo-guy-in-jeans-clothes.jpg);
+.teacher-container .teacher-card .teacher-face.teacher-face2 {
+  background-image:url(http://i.absurdopedia.net/thumb/c/c0/Татарский_снюсоед_перед_нападением.jpg/300px-Татарский_снюсоед_перед_нападением.jpg);
+  background-size: cover;
+  background-repeat: no-repeat;
+  border-radius: 15px;
 }
 
 .teacher-container .teacher-card:hover .teacher-face.teacher-face2 {
