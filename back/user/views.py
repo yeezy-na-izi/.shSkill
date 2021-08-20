@@ -7,6 +7,7 @@ from django.urls import reverse
 from django.utils.encoding import force_bytes, force_text
 from django.utils.http import urlsafe_base64_encode, urlsafe_base64_decode
 from django.core.mail import EmailMessage
+from django.db.models import Q
 
 from user.forms import LoginUserForm, CreateUserForm
 from user.utils import token_generator
@@ -106,5 +107,6 @@ def logout_page(request):
 
 
 def teachers(request):
-    context = {}
+    _teachers = Account.objects.filter(~Q(teacher=None))
+    context = {'teachers': _teachers}
     return render(request, 'user/teachers.html', context)
