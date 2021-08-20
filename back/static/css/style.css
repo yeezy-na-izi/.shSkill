@@ -12,12 +12,13 @@
 @import url('https://fonts.googleapis.com/css?family=Poppins:100,200,300,400,500,600,700,800,900');
 
 .teacher-container {
-  max-width: 1200px;
+  max-width: 100%;
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
   grid-gap: 15px;
   margin: 0 auto;
   padding: 10px;
+  align-items: center;
 }
 
 .teacher-container .teacher-card {
