@@ -6,8 +6,17 @@ class MaterialBlocks(models.Model):
     class Meta:
         verbose_name = 'Блок материала'
 
+    colours = (
+        ('1', 'Голубой'),
+        ('2', 'Розовый'),
+        ('5', 'Фиолетовый'),
+        ('4', 'Зеленый'),
+        ('3', 'Розово-фиолетовый'),
+
+    )
     title = models.CharField(max_length=256)
     block = models.FileField(verbose_name='Информация блока', upload_to='static/education/course/')
+    color = models.CharField(max_length=1, choices=colours)
 
 
 class Material(models.Model):

@@ -1,7 +1,8 @@
 {% extends "extends/index.html" %}
 {% load static %}
 {% block content %}
-<center class='mt-3'><h1>Урок: {{ lesson }}</h1></center>
+{% load custom_tags %}
+<center class='mt-3'><a href="{{ request.path|join_with:'/' }}"><h1>Урок: {{ lesson }}</h1></a></center>
 
 {% include 'education/lesson/materials.html' %}
 {% include 'education/lesson/tasks.html' %}
