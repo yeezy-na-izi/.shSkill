@@ -1,0 +1,9 @@
+<section class="material__plan">
+    <nav>
+        <ol>
+            {% for block in material.blocks.all %}
+            <li><a class="material__link" href="#{{ forloop.counter }}">{{block.title}}</a></li>
+            {% endfor %}
+        </ol>
+    </nav>
+</section>

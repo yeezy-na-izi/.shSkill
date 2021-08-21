@@ -1,5 +1,5 @@
 from django import forms
-from .models import Course, Lesson, Task
+from .models import Course, Lesson, Task, MaterialBlocks
 
 
 class CreateCourse(forms.ModelForm):
@@ -34,4 +34,14 @@ class CreateTask(forms.ModelForm):
             'description',
             'color',
 
+        ]
+
+
+class CreateMaterialBlock(forms.ModelForm):
+    class Meta:
+        model = MaterialBlocks
+        fields = [
+            'title',
+            'block',
+            'color',
         ]

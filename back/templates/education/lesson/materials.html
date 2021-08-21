@@ -1,38 +1,16 @@
 <center class="mt-5"><h2>Материалы урока</h2></center>
 <div class="lesson-container">
-    <div class="material-card card-2">
+    {% for block in lesson.materials.blocks.all %}
+    <div class="material-card card-{{ block.color }}">
         <div class="card__icon"><i class="fas fa-bolt"></i></div>
-        <h2 class="card__title">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</h2>
+        <h2 class="card__title">{{ block.title }}</h2>
         <p class="card__apply">
-            <a class="card__link" href="#">Apply Now <i class="fas fa-arrow-right"></i></a>
+            <a class="card__link" href="material/#{{ forloop.counter }}">Открыть<i class="fas fa-arrow-right"></i></a>
         </p>
     </div>
-    <div class="material-card card-1">
-        <div class="card__icon"><i class="fas fa-bolt"></i></div>
-        <h2 class="card__title">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</h2>
-        <p class="card__apply">
-            <a class="card__link" href="#">Apply Now <i class="fas fa-arrow-right"></i></a>
-        </p>
-    </div>
-    <div class="material-card card-3">
-        <div class="card__icon"><i class="fas fa-bolt"></i></div>
-        <h2 class="card__title">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</h2>
-        <p class="card__apply">
-            <a class="card__link" href="#">Apply Now <i class="fas fa-arrow-right"></i></a>
-        </p>
-    </div>
-    <div class="material-card card-4">
-        <div class="card__icon"><i class="fas fa-bolt"></i></div>
-        <h2 class="card__title">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</h2>
-        <p class="card__apply">
-            <a class="card__link" href="#">Apply Now <i class="fas fa-arrow-right"></i></a>
-        </p>
-    </div>
-    <div class="material-card card-5">
-        <div class="card__icon"><i class="fas fa-bolt"></i></div>
-        <h2 class="card__title">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</h2>
-        <p class="card__apply">
-            <a class="card__link" href="#">Apply Now <i class="fas fa-arrow-right"></i></a>
-        </p>
-    </div>
+    {% endfor %}
 </div>
+{% if request.user.teacher %}
+{% include 'education/lesson/materials_modal_window.html' %}
+{% endif %}
+

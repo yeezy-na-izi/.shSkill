@@ -30,3 +30,9 @@ def split1(my_object, key):
 @register.filter(name='join_with')
 def join_with(my_object, key: str):
     return key.join(my_object.split(key)[:-2])
+
+
+@register.filter(name='file_split')
+def file_split(my_object, key: str):
+    x = str(my_object)
+    return key.join(x.split(key)[1:])
