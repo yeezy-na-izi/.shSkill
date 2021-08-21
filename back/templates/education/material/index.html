@@ -1,7 +1,8 @@
 {% extends 'education/material/extend.html' %}
+{% load custom_tags %}
 
 {% block material %}
-<h1>{{ material.title }}</h1>
+<h1><a href="{{ request.path|join_with:'/' }}">{{ material.title }}</a></h1>
 {% include 'education/material/navigation.html' %}
 {% include 'education/material/sections.html' %}
 {% endblock %}

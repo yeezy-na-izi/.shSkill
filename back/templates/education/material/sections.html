@@ -1,3 +1,4 @@
+{% load custom_tags %}
 {% if material.annotations %}
 <section class="material__annotation">
     <h2>Аннотация</h2>
@@ -5,6 +6,8 @@
 </section>
 {% endif %}
 {% for i in material.blocks.all %}
-{{ i.block }}
-
+<p>
+    {% include i.block|file_split:'/' %}
+</p>
 {% endfor %}
+
