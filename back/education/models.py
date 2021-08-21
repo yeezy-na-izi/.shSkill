@@ -30,7 +30,7 @@ class MaterialBlocks(models.Model):
     title = models.CharField(max_length=256)
     block = models.FileField(verbose_name='Информация блока', upload_to='templates/education/material_sections')
     color = models.CharField(max_length=1, choices=colours)
-    icon = models.CharField(max_length=32, choices=icons, default='fa-bolt')
+    icon = models.CharField(max_length=32, choices=icons, default='bolt')
 
 
 class Material(models.Model):
