@@ -44,4 +44,5 @@ class CreateMaterialBlock(forms.ModelForm):
             'title',
             'block',
             'color',
+            'icon'
         ]

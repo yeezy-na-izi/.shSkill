@@ -2,7 +2,7 @@
 <div class="lesson-container">
     {% for block in lesson.materials.blocks.all %}
     <div class="material-card card-{{ block.color }}">
-        <div class="card__icon"><i class="fas fa-bolt"></i></div>
+        <div class="card__icon"><i class="fas fa-{{ block.icon }}"></i></div>
         <h2 class="card__title">{{ block.title }}</h2>
         <p class="card__apply">
             <a class="card__link" href="material/#{{ forloop.counter }}">Открыть<i class="fas fa-arrow-right"></i></a>

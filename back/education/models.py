@@ -15,9 +15,22 @@ class MaterialBlocks(models.Model):
         ('5', 'Розово-фиолетовый'),
 
     )
+    icons = (
+        ('bolt', 'Молния'),
+        ('apple-alt', 'Яблоко'),
+        ('balance-scale-left', 'Весы'),
+        ('brain', 'Мозг'),
+        ('check', 'Галочка'),
+        ('cloud', 'Облако'),
+        ('compass', 'Компас'),
+        ('dev', 'dev'),
+        ('git', 'git'),
+        ('lemon', 'Лимон'),
+    )
     title = models.CharField(max_length=256)
     block = models.FileField(verbose_name='Информация блока', upload_to='templates/education/material_sections')
     color = models.CharField(max_length=1, choices=colours)
+    icon = models.CharField(max_length=32, choices=icons, default='fa-bolt')
 
 
 class Material(models.Model):
