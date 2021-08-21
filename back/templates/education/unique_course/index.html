@@ -9,7 +9,7 @@
     {% if lesson.show %}
     <div class="row">
         <div class="alert alert-light shadow-5 col-md mt-2 card-animation"
-             onclick="window.location='/courses/{{ course.course_id }}/{{ lesson.pk }}';">
+             onclick="window.location='/courses/{{ course.course_id }}/{{ lesson.slug }}';">
             <h3>{{ forloop.counter }}) {{ lesson }}</h3>
             <p class="mt-2">
                 {{ lesson.description }}
@@ -19,7 +19,7 @@
     {% elif request.user.teacher %}
     <div class="row">
         <div class="alert alert-light shadow-5 col-md mt-2 card-animation"
-             onclick="window.location='/courses/{{ course.course_id }}/{{ lesson.pk }}';">
+             onclick="window.location='/courses/{{ course.course_id }}/{{ lesson.slug }}';">
             <h3>{{ forloop.counter }}) {{ lesson }} (Урок закрыт для просмотра) </h3>
             <p class="mt-2">
                 {{ lesson.description }}

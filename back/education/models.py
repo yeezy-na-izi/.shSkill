@@ -1,5 +1,11 @@
 from django.db import models
 from user.models import Student, Teacher
+from django.contrib.auth.models import UserManager
+
+
+def randomString():
+    um = UserManager()
+    return um.make_random_password(length=32)
 
 
 class MaterialBlocks(models.Model):
@@ -75,6 +81,7 @@ class Lesson(models.Model):
     description = models.TextField(verbose_name='Описание')
     price = models.FloatField(verbose_name='Цена', default=1000)
     show = models.BooleanField(verbose_name='Показать на странице', default=True)
+    slug = models.SlugField(verbose_name='Код урока', default=randomString())
 
     def __str__(self):
         return self.title

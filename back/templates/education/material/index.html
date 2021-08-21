@@ -2,7 +2,13 @@
 {% load custom_tags %}
 
 {% block material %}
-<h1><a href="{{ request.path|join_with:'/' }}">{{ material.title }}</a></h1>
+<center style="margin-top:20px;">
+    <h1>
+        <a href="{{ request.path|join_with:'/' }}" style="text-decoration:none;color:black;">
+            {{ material.title }}
+        </a>
+    </h1>
+</center>
 {% include 'education/material/navigation.html' %}
 {% include 'education/material/sections.html' %}
 {% endblock %}

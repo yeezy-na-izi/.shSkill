@@ -1,5 +1,6 @@
 from django.shortcuts import render, redirect
 from django.contrib import messages
+from django.http import Http404
 
 from education.forms import CreateCourse, CreateLesson, CreateTask, CreateMaterialBlock
 from education.models import Course, Lesson
@@ -63,8 +64,11 @@ def courses_list(request):
     return render(request, 'education/courses/index.html', context)
 
 
-def tasks(request, course_id, pk):
-    lesson = Lesson.objects.get(pk=pk)
+def tasks(request, course_id, slug):
+    try:
+        lesson = Course.objects.get(course_id=course_id).lessons.all().get(slug=slug)
+    except Lesson.DoesNotExist:
+        raise Http404('Страницы не существует')
     if request.method == 'POST':
         login_and_register(request)
         if 'newMaterialBlock' in request.POST:
@@ -84,14 +88,18 @@ def tasks(request, course_id, pk):
                 lesson.save()
             else:
                 messages.error(request, 'Что-то пошло не так')
+
     context = {'lesson': lesson}
     return render(request, 'education/lesson/index.html', context)
 
 
-def materials(request, course_id, pk):
-    lesson = Lesson.objects.get(pk=pk)
-    material = lesson.materials
-    if request.method == 'POST':
-        login_and_register(request),
-    context = {'material': material}
-    return render(request, 'education/material/index.html', context)
+def materials(request, course_id, slug):
+    try:
+        lesson = Course.objects.get(course_id=course_id).lessons.all().get(slug=slug)
+        material = lesson.materials
+        if request.method == 'POST':
+            login_and_register(request),
+        context = {'material': material}
+        return render(request, 'education/material/index.html', context)
+    except Lesson.DoesNotExist:
+        raise Http404('Страницы не существует')

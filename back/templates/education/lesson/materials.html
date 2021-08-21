@@ -1,11 +1,12 @@
+{% load custom_tags %}
 <center class="mt-5"><h2>Материалы урока</h2></center>
 <div class="lesson-container">
-    {% for block in lesson.materials.blocks.all %}
+    {% for block in lesson.materials.blocks.all|my_sort:'pk' %}
     <div class="material-card card-{{ block.color }}">
         <div class="card__icon"><i class="fas fa-{{ block.icon }}"></i></div>
         <h2 class="card__title">{{ block.title }}</h2>
         <p class="card__apply">
-            <a class="card__link" href="material/#{{ forloop.counter }}">Открыть<i class="fas fa-arrow-right"></i></a>
+            <a class="card__link" href="material/#{{ forloop.counter }}" style="text-decoration:none;color:white;">Открыть<i class="fas fa-arrow-right"></i></a>
         </p>
     </div>
     {% endfor %}

@@ -5,9 +5,7 @@
     {{ material.annotations|linebreaks }}
 </section>
 {% endif %}
-{% for i in material.blocks.all %}
-<p>
-    {% include i.block|file_split:'/' %}
-</p>
+{% for i in material.blocks.all|my_sort:'pk' %}
+{% include i.block|file_split:'/' %}
 {% endfor %}
 
