@@ -1,1 +1,16 @@
 <center class="mt-5"><h2>Материалы урока</h2></center>
+<div class="lesson-container">
+    {% for block in lesson.materials.blocks.all %}
+    <div class="material-card card-{{ block.color }}">
+        <div class="card__icon"><i class="fas fa-bolt"></i></div>
+        <h2 class="card__title">{{ block.title }}</h2>
+        <p class="card__apply">
+            <a class="card__link" href="material/#{{ forloop.counter }}">Открыть<i class="fas fa-arrow-right"></i></a>
+        </p>
+    </div>
+    {% endfor %}
+</div>
+{% if request.user.teacher %}
+{% include 'education/lesson/materials_modal_window.html' %}
+{% endif %}
+

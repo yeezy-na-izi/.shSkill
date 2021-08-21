@@ -15,7 +15,7 @@
         <div class="lesson-content">
             <p>
                 {% autoescape off %}
-                {{ task.description|split_to:128|linebreaksbr }}
+                {{ task.description|split_to:112|linebreaksbr }}
                 {% endautoescape %}
             </p>
             <a href="#" style="background:{{ task.color }}" class="lesson-button">
@@ -25,6 +25,6 @@
     </div>
     {% endfor %}
 </div>
-{% if request.user.is_admin %}
+{% if request.user.teacher %}
 {% include 'education/lesson/task_modal_window.html' %}
 {% endif %}

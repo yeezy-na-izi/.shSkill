@@ -37,7 +37,7 @@
                 </p>
             </div>
         </div>
-        {% elif request.user.is_admin %}
+        {% elif request.user.teacher %}
         <div class="card text-white bg-{{ course.color }} mb-3 mt-2 ms-3 me-3"
              style="max-width: 25rem;cursor: pointer;"
              onclick="window.location='/courses/{{ course.course_id }}';">
@@ -66,7 +66,7 @@
     </div>
 </div>
 
-{% if request.user.is_admin %}
+{% if request.user.teacher %}
 
 {% include 'education/courses/add_course.html' %}
 

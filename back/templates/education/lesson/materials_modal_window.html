@@ -1,0 +1,51 @@
+<center>
+    <a type="button" data-mdb-toggle="modal" data-mdb-target="#addMaterialModal">
+        <i class="fas fa-plus-circle fa-2x mb-3 mt-3" style="color: #bf01f4">
+        </i>
+    </a>
+</center>
+<div class="modal top fade" id="addMaterialModal" tabindex="-1" aria-labelledby="MaterialModalLabel" aria-hidden="true"
+     data-mdb-backdrop="true" data-mdb-keyboard="true">
+    <div class="modal-dialog modal-lg  modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="MaterialModalLabel">Добавить блок материалов</h5>
+                <button type="button" class="btn-close" data-mdb-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <form method="POST" enctype="multipart/form-data" id="formAddMaterial">
+                    {% csrf_token %}
+                    <input type="hidden" name="newMaterialBlock"/>
+                    <div class="form-outline mb-4">
+                        <input
+                                type="text"
+                                name="title"
+                                id="titleCourse"
+                                class="form-control"
+                                data-mdb-showcounter="true"
+                                maxlength="100"
+                        />
+                        <label class="form-label" for="titleCourse">Название блока</label>
+                        <div class="form-helper"></div>
+                    </div>
+
+                    <div class="input-group">
+                        <input type="file" class="form-control" name="block" accept=".html"/>
+                    </div>
+
+                    <select name="color" class="form-select mt-4" id="ColorTask">
+                        <option value="1">Голубой</option>
+                        <option value="2">Розовый</option>
+                        <option value="3">Фиолетовый</option>
+                        <option value="4">Зеленый</option>
+                        <option value="5">Розово-фиолетовый</option>
+                    </select>
+
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="submit" class="btn btn-primary" form="formAddMaterial">Добавить</button>
+            </div>
+        </div>
+    </div>
+</div>

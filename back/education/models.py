@@ -5,9 +5,19 @@ from user.models import Student, Teacher
 class MaterialBlocks(models.Model):
     class Meta:
         verbose_name = 'Блок материала'
+        verbose_name_plural = 'Блоки материала'
 
+    colours = (
+        ('1', 'Голубой'),
+        ('2', 'Розовый'),
+        ('3', 'Фиолетовый'),
+        ('4', 'Зеленый'),
+        ('5', 'Розово-фиолетовый'),
+
+    )
     title = models.CharField(max_length=256)
-    block = models.FileField(verbose_name='Информация блока', upload_to='static/education/course/')
+    block = models.FileField(verbose_name='Информация блока', upload_to='templates/education/material_sections')
+    color = models.CharField(max_length=1, choices=colours)
 
 
 class Material(models.Model):
@@ -18,6 +28,9 @@ class Material(models.Model):
     title = models.CharField(verbose_name='Название', max_length=64)
     blocks = models.ManyToManyField(verbose_name='Блоки', to=MaterialBlocks, blank=True)
     annotations = models.TextField(verbose_name='Аннотация', blank=True)
+
+    def __str__(self):
+        return self.title
 
 
 class Task(models.Model):

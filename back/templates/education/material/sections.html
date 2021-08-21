@@ -1,0 +1,13 @@
+{% load custom_tags %}
+{% if material.annotations %}
+<section class="material__annotation">
+    <h2>Аннотация</h2>
+    {{ material.annotations|linebreaks }}
+</section>
+{% endif %}
+{% for i in material.blocks.all %}
+<p>
+    {% include i.block|file_split:'/' %}
+</p>
+{% endfor %}
+

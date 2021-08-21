@@ -16,7 +16,7 @@
             </p>
         </div>
     </div>
-    {% elif request.user.is_admin %}
+    {% elif request.user.teacher %}
     <div class="row">
         <div class="alert alert-light shadow-5 col-md mt-2 card-animation"
              onclick="window.location='/courses/{{ course.course_id }}/{{ lesson.pk }}';">
@@ -28,7 +28,7 @@
     </div>
     {% endif %}
     {% endfor %}
-    {% if request.user.is_admin %}
+    {% if request.user.teacher %}
 
     {% include 'education/unique_course/modal_window.html' %}
 

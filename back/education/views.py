@@ -1,7 +1,7 @@
 from django.shortcuts import render, redirect
 from django.contrib import messages
 
-from education.forms import CreateCourse, CreateLesson, CreateTask
+from education.forms import CreateCourse, CreateLesson, CreateTask, CreateMaterialBlock
 from education.models import Course, Lesson
 from user.views import login_and_register
 
@@ -9,11 +9,8 @@ from user.views import login_and_register
 def home(request):
     if request.method == 'POST':
         login_and_register(request)
-        context = {}
-        return render(request, 'education/home/index.html')
-    else:
-        context = {}
-        return render(request, 'education/home/index.html', context)
+    context = {}
+    return render(request, 'education/home/index.html', context)
 
 
 def unique_course(request, course_id):
@@ -37,9 +34,10 @@ def courses_list(request):
         login_and_register(request)
         if 'newCourse' in request.POST:
             form = CreateCourse(
-                data=request.POST,
-                files=request.FILES
+                request.POST,
+                request.FILES
             )
+            print(1)
             if form.is_valid():
                 form.save()
             else:
@@ -69,13 +67,17 @@ def tasks(request, course_id, pk):
     lesson = Lesson.objects.get(pk=pk)
     if request.method == 'POST':
         login_and_register(request)
-        if 'newMaterial' in request.POST:
-            pass
-        if 'newTask' in request.POST:
-            form = CreateTask(
-                data=request.POST
-
-            )
+        if 'newMaterialBlock' in request.POST:
+            form = CreateMaterialBlock(data=request.POST, files=request.FILES)
+            if form.is_valid():
+                lesson.materials.blocks.add(form.save())
+                lesson.save()
+            else:
+                for i in form.errors:
+                    print(i)
+                messages.error(request, 'Что-то пошло не так')
+        elif 'newTask' in request.POST:
+            form = CreateTask(data=request.POST)
             if form.is_valid():
                 x = form.save()
                 lesson.tasks.add(x)
