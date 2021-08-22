@@ -1,5 +1,8 @@
 {% extends "extends/index.html" %}
 {% load static %}
+{% block title %}
+{{ course }}
+{% endblock %}
 {% block style %}
 <link rel="stylesheet" href="{% static 'css/course.css' %}"/>
 {% endblock %}
@@ -26,7 +29,7 @@
 			</div>
 			<h6>Chapter {{ forloop.counter }}</h6>
 			<h2>{{ lesson }}</h2>
-			<button class="course-btn">Открыть</button>
+			<a class="course-btn" href="{{ lesson.slug }}/" style="color: #fff;">Открыть</a>
 		</div>
 	</div>
     {% elif request.user.teacher %}
@@ -45,7 +48,7 @@
 			</div>
 			<h6>Описание</h6>
 			<h4>{{ lesson.description }} <br/>(Урок закрыт для просмотра) </h4>
-			<button class="course-btn">Открыть</button>
+			<a class="course-btn" href="{{ lesson.slug }}/" style="color: #fff;">Открыть</a>
 		</div>
 	</div>
     {% endif %}
