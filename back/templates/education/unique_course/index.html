@@ -14,13 +14,14 @@
 		<div class="course-preview">
 			<h6>Course</h6>
 			<h2>{{ course.title }}</h2>
-			<a href="#">View all chapters <i class="fas fa-chevron-right"></i></a>
+			<a href="#">Открыть урок <i class="fas fa-chevron-right"></i></a>
+
 		</div>
 		<div class="course-info">
 			<div class="progress-container">
 				<div class="progress"></div>
 				<span class="progress-text">
-					0/{{ lesson.tasks.count }} Challenges
+					0/{{ lesson.tasks.count }} Задач
 				</span>
 			</div>
 			<h6>Chapter {{ forloop.counter }}</h6>
@@ -33,17 +34,18 @@
 		<div class="course-preview">
 			<h6>Урок {{ forloop.counter }}</h6>
 			<h2>{{lesson}}</h2>
+			<a href="{{ lesson.slug }}/">Открыть урок <i class="fas fa-chevron-right"></i></a>
 		</div>
 		<div class="course-info">
 			<div class="progress-container">
 				<div class="progress"></div>
 				<span class="progress-text">
-					0/{{ lesson.tasks.count }} Challenges
+					0/{{ lesson.tasks.count }} Задач
 				</span>
 			</div>
 			<h6>Описание</h6>
 			<h4>{{ lesson.description }} <br/>(Урок закрыт для просмотра) </h4>
-			<button class="course-btn">Continue</button>
+			<button class="course-btn">Открыть</button>
 		</div>
 	</div>
     {% endif %}

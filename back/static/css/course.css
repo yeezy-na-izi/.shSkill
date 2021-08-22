@@ -37,21 +37,35 @@
 	color: #fff;
 	padding: 30px;
 	width: 30%;
+	min-width: 250px;
 }
 
 .course-preview a {
+	display: none;
+}
+
+.course-info {
+	padding: 30px;
+	position: relative;
+	width: 80%;
+}
+
+
+@media screen and (max-width: 720px) {
+    .course-info {
+        display: none !important;
+    }
+    .course-preview {
+        width: 100%;
+    }
+    .course-preview a {
 	color: #fff;
 	display: inline-block;
 	font-size: 12px;
 	opacity: 0.6;
 	margin-top: 30px;
 	text-decoration: none;
-}
-
-.course-info {
-	padding: 30px;
-	position: relative;
-	width: 100%;
+    }
 }
 
 .progress-container {
