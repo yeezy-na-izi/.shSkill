@@ -1,37 +1,58 @@
 {% extends "extends/index.html" %}
 {% load static %}
+{% block style %}
+<link rel="stylesheet" href="{% static 'css/course.css' %}"/>
+{% endblock %}
 {% block content %}
 
-<div class="container mt-3">
-    <h3>{{ course }}</h3>
-    <p class="mt-2">{{ course.description|linebreaks }}</p>
+<h3>{{ course }}</h3>
+<p class="mt-2">{{ course.description|linebreaks }}</p>
+<div class="courses-container">
     {% for lesson in course.lessons.all %}
     {% if lesson.show %}
-    <div class="row">
-        <div class="alert alert-light shadow-5 col-md mt-2 card-animation"
-             onclick="window.location='/courses/{{ course.course_id }}/{{ lesson.slug }}';">
-            <h3>{{ forloop.counter }}) {{ lesson }}</h3>
-            <p class="mt-2">
-                {{ lesson.description }}
-            </p>
-        </div>
-    </div>
+	<div class="course">
+		<div class="course-preview">
+			<h6>Course</h6>
+			<h2>{{ course.title }}</h2>
+			<a href="#">View all chapters <i class="fas fa-chevron-right"></i></a>
+		</div>
+		<div class="course-info">
+			<div class="progress-container">
+				<div class="progress"></div>
+				<span class="progress-text">
+					0/{{ lesson.tasks.count }} Challenges
+				</span>
+			</div>
+			<h6>Chapter {{ forloop.counter }}</h6>
+			<h2>{{ lesson }}</h2>
+			<button class="course-btn">Открыть</button>
+		</div>
+	</div>
     {% elif request.user.teacher %}
-    <div class="row">
-        <div class="alert alert-light shadow-5 col-md mt-2 card-animation"
-             onclick="window.location='/courses/{{ course.course_id }}/{{ lesson.slug }}';">
-            <h3>{{ forloop.counter }}) {{ lesson }} (Урок закрыт для просмотра) </h3>
-            <p class="mt-2">
-                {{ lesson.description }}
-            </p>
-        </div>
-    </div>
+    <div class="course" style="margin-top:20px;" >
+		<div class="course-preview">
+			<h6>Урок {{ forloop.counter }}</h6>
+			<h2>{{lesson}}</h2>
+		</div>
+		<div class="course-info">
+			<div class="progress-container">
+				<div class="progress"></div>
+				<span class="progress-text">
+					0/{{ lesson.tasks.count }} Challenges
+				</span>
+			</div>
+			<h6>Описание</h6>
+			<h4>{{ lesson.description }} <br/>(Урок закрыт для просмотра) </h4>
+			<button class="course-btn">Continue</button>
+		</div>
+	</div>
     {% endif %}
     {% endfor %}
-    {% if request.user.teacher %}
-
-    {% include 'education/unique_course/modal_window.html' %}
-
-    {% endif %}
 </div>
+{% if request.user.teacher %}
+
+{% include 'education/unique_course/modal_window.html' %}
+
+{% endif %}
+
 {% endblock %}
