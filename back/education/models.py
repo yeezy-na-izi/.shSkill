@@ -58,9 +58,9 @@ class Task(models.Model):
         verbose_name_plural = 'Задачи'
 
     colors = (
-        ('#4169E1', 'Легкий уровень'),
-        ('#ffaf00', 'Средний уровень'),
-        ('#bb02ff', 'Сложный уровень'),
+        ('#95F49E', 'Легкий уровень'),
+        ('#F9D648', 'Средний уровень'),
+        ('#ac3d67', 'Сложный уровень'),
     )
     title = models.CharField(verbose_name='Название', max_length=100)
     description = models.TextField(verbose_name='Условие задачи')
