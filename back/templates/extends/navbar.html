@@ -1,7 +1,11 @@
+{% load static %}
 <nav class="navbar navbar-expand-sm navbar-dark bg-dark sticky-top" style="z-index: 2000; opacity: 1 !important;">
     <div class="container-fluid">
         <a class="navbar-brand nav-link" href="/">
-            <strong>.shSkills</strong>
+            <iframe src="{% static 'img/sh.svg' %}" style="width: 60px; height: 40px;">
+            Ваш браузер не поддерживает SVG
+            </iframe>
+            <!--<strong>.shSkills</strong>-->
             <!--Count total number of character in '.shSkills' = 9 -->
         </a>
         <button class="navbar-toggler" type="button" data-mdb-toggle="collapse" data-mdb-target="#navbarExample01"
