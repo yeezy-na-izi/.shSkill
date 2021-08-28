@@ -1,5 +1,7 @@
 body {
-  counter-reset: section;
+    counter-reset: section;
+    color: var(--color-text-main);
+    font-family: var(--yandex-sans);
 }
 
 section {
@@ -38,8 +40,6 @@ section.material__note {
 }
 
 .material__annotation {
-    margin-right: 10px;
-    margin-left: 10px;
     background: var(--color-background-panel);
     border-radius: 15px;
     padding: 32px 60px 40px;
@@ -63,9 +63,6 @@ section.material__note {
     font:var(--heading-3-mobile)
 }
 
-.material__annotation,.material__chapter,.material__plan {
-    margin:24px 0 40px
-}
 
 .material__plan ol {
     display:inline-block;
@@ -109,7 +106,7 @@ section.material__note {
 }
 
 .material__annotation,.material__chapter,.material__plan {
-    margin:32px 0 64px
+    margin:32px 10px 64px
 }
 
 .material__plan {
@@ -227,8 +224,8 @@ section.material__note {
 }
 
 .material__note {
-        margin:32px 0;
-        padding:24px 0
+    margin:32px 0;
+    padding:24px 0
 }
 
 /* Остальное */
@@ -246,4 +243,171 @@ section.material__note {
 
 .material__illustration {
     max-width:100%
+}
+
+:root {
+    --color-text-main: #4d4d4d;
+    --color-text-secondary: grey;
+    --color-text-heading: #000;
+    --color-text-invert: #fff;
+    --color-text-control: #000;
+    --color-text-status: #333;
+    --color-text-warning: #eb0909;
+    --color-text-positive: #29a629;
+    --color-spinner-label: grey;
+    --color-background-main: #fff;
+    --color-background-menu: #333;
+    --color-background-tooltip: #444;
+    --color-background-panel: #f5f2f0;
+    --color-background-active: #ffeba0;
+    --color-background-notification-center: #f8f8f8;
+    --color-separator: #e5e5e5;
+    --color-separator-dark: hsla(0,0%,100%,0.3);
+    --color-outline: #fc0;
+    --color-control-active: #666;
+    --color-control-hover: #f5f5f5;
+    --color-control-outline: #ccc;
+    --color-control-outline-hover: #b3b3b3;
+    --color-checked-checkbox: #ffdb4d;
+    --color-checked-checkbox-hover: #ffd633;
+    --color-link: #000;
+    --color-link-hover: #4d4d4d;
+    --color-link-grey: grey;
+    --color-link-grey-hover: #999;
+    --color-ticker: #ffdb4d;
+    --color-button-active: #f3f1ed;
+    --color-button-ok: #2db32d;
+    --color-button-ok-hover: #29a629;
+    --color-button-ok-active: #2b992b;
+    --color-button-action: #ffdb4d;
+    --color-button-action-hover: #ffd633;
+    --color-button-action-active: #fc0;
+    --color-indicator-dark-green: #2db32d;
+    --color-indicator-green: #a8de00;
+    --color-indicator-red: #ff5959;
+    --color-indicator-dark-grey: #ccc;
+    --color-indicator-grey: rgba(0,0,0,0.08);
+    --color-indicator-white: #fff;
+    --color-indicator-yellow: #ffdd61;
+    --color-indicator-dot-red: #ff5959;
+    --color-indicator-dot-dark-grey: #ccc;
+    --color-header-accepted: #2db32d;
+    --color-header-accepted-after-deadline: #accd8c;
+    --color-header-rework: #ff5959;
+    --color-status-ok: #2b992b;
+    --color-status-redo: #eb0c0c;
+    --color-status-active: #ffeba0;
+    --color-status-waiting: #eb9c3d;
+    --color-status-accepted-after-deadline: #accd8c;
+    --color-table-cell-text: #000;
+    --color-table-button-border: #979797;
+    --color-task-status-ok: #2eb72e;
+    --color-task-status-waiting: #ffc800;
+    --color-task-status-redo: #ff5959;
+    --color-notification-error: #ff5959;
+    --color-notification-success: #29a629;
+    --color-comments-form-background: #f5f5f5;
+    --color-comments-own-background: #fff5d0;
+    --color-comments-after-deadline-text: #fb0006;
+    --color-comments-after-deadline-border: #fb0006;
+    --color-comments-own-active-background: #ffeba0;
+    --color-comments-list-box-shadow: rgba(0,0,0,0.08);
+    --color-schedule-events-outline: #6c6c6c;
+    --color-schedule-secondary-text: #a8a8a8;
+    --color-schedule-event-elective: #d1f0d0;
+    --color-schedule-event-elective-hover: #b4e6b2;
+    --color-schedule-event-lesson: #e6e6e6;
+    --color-schedule-event-lesson-hover: #d9d9d9;
+    --color-schedule-event-reserve: #fce68e;
+    --color-schedule-event-reserve-hover: #fedf6f;
+    --color-schedule-event-vacation: #fce68e;
+    --color-schedule-event-vacation-hover: #fedf6f;
+    --color-schedule-event-vacation-text: #eb0c0c;
+    --color-schedule-event-test: #d1ebff;
+    --color-schedule-event-test-hover: #a3d6ff;
+    --color-schedule-event-skip: #eb0c0c;
+    --color-schedule-event-selected-text: #fff;
+    --color-schedule-event-selected-background: #666;
+    --color-schedule-event-edited-background: #f5f5f5;
+    --color-schedule-unassigned-events-list: #000;
+    --opacity-schedule-event-passed: 0.6;
+    --color-filter-label-background: #dddcff;
+    --color-filter-label-border: #c5c2f2;
+    --color-filter-clear-label-background: #fff;
+    --color-filter-clear-label-border: #ccc;
+    --color-filter-clear-label-text: #eb0c0c;
+    --color-filter-value-separator: #8682c7;
+    --color-tag-blue: #247ba0;
+    --color-tag-green: #70c1b3;
+    --color-tag-red: #f25f5c;
+    --color-variant-status-not-assigned: rgba(0,0,0,0.08);
+    --color-variant-status-not-solved: #0090e6;
+    --color-variant-status-is-solving: rgba(0,144,230,0.3);
+    --color-variant-status-has-solved: #777;
+    --color-student-graduated: #ffc100;
+    --color-student-expelled: #ff5959;
+    --color-antiplagiary-red: #eb0c0c;
+    --color-antiplagiary-yellow: #ffdd61;
+    --color-antiplagiary-grey: rgba(0,0,0,var(--icon-grey-opacity));
+    --color-antiplagiary-mark: #333;
+    --color-merge-deletes: rgba(255,0,0,0.2);
+    --color-merge-additions: rgba(155,185,85,0.2);
+    --icon-opacity: 0.24;
+    --icon-grey-opacity: 0.44;
+    --icon-opacity-hover: 1;
+    --yandex-sans: "YS Text",system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,Cantarell,Noto Sans,sans-serif;
+    --heading-1-mobile: bold 24px/28px var(--yandex-sans);
+    --heading-2-mobile: bold 20px/24px var(--yandex-sans);
+    --heading-3-mobile: 500 18px/22px var(--yandex-sans);
+    --heading-4-mobile: 500 16px/20px var(--yandex-sans);
+    --heading-5-mobile: 500 14px/18px var(--yandex-sans);
+    --paragraph-mobile: normal 14px/22px var(--yandex-sans);
+    --text-secondary-mobile: normal 12px/16px var(--yandex-sans);
+    --heading-1: bold 40px/44px var(--yandex-sans);
+    --heading-2: bold 32px/40px var(--yandex-sans);
+    --heading-3: bold 24px/32px var(--yandex-sans);
+    --heading-4: 500 20px/24px var(--yandex-sans);
+    --heading-5: 500 16px/20px var(--yandex-sans);
+    --paragraph-size-l-main: normal 16px/24px var(--yandex-sans);
+    --paragraph-size-m-main: normal 14px/24px var(--yandex-sans);
+    --paragraph-size-m-secondary: normal 14px/22px var(--yandex-sans);
+    --paragraph-size-s-secondary: normal 12px/18px var(--yandex-sans);
+    --text-size-m-secondary: normal 14px/18px var(--yandex-sans);
+    --text-size-s-secondary: normal 12px/16px var(--yandex-sans);
+    --sideblock-z-index: 200;
+    --stub-z-index: 100;
+}
+
+
+@font-face{
+    font-display:fallback;
+    font-family:YS Text;
+    font-stretch:normal;
+    font-style:normal;
+    font-weight:400;
+    src:url(https://yastatic.net/s3/home/fonts/ys/1/text-regular.woff2) format("woff2"),url(https://yastatic.net/s3/home/fonts/ys/1/text-regular.woff) format("woff")
+}
+@font-face{
+    font-display:fallback;
+    font-family:YS Text;
+    font-stretch:normal;
+    font-style:italic;
+    font-weight:400;
+    src:url(https://yastatic.net/s3/home/fonts/ys/1/text-regular-italic.woff2) format("woff2"),url(https://yastatic.net/s3/home/fonts/ys/1/text-regular-italic.woff) format("woff")
+}
+@font-face{
+    font-display:fallback;
+    font-family:YS Text;
+    font-stretch:normal;
+    font-style:normal;
+    font-weight:500;
+    src:url(https://yastatic.net/s3/home/fonts/ys/1/text-medium.woff2) format("woff2"),url(https://yastatic.net/s3/home/fonts/ys/1/text-medium.woff) format("woff")
+}
+@font-face{
+    font-display:fallback;
+    font-family:YS Text;
+    font-stretch:normal;
+    font-style:normal;
+    font-weight:700;
+    src:url(https://yastatic.net/s3/home/fonts/ys/1/text-bold.woff2) format("woff2"),url(https://yastatic.net/s3/home/fonts/ys/1/text-bold.woff) format("woff")}body{color:var(--color-text-main);font-family:var(--yandex-sans)
 }
