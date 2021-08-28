@@ -108,7 +108,7 @@ def materials(request, course_id, slug):
 def task(request, course_id, slug, index):
     try:
         lesson = Course.objects.get(course_id=course_id).lessons.all().get(slug=slug)
-        unique_task = list(lesson.tasks.all())[int(index) - 1]
+        unique_task = list(lesson.tasks.order_by('pk'))[int(index) - 1]
         if request.method == 'POST':
             login_and_register(request)
         context = {'task': unique_task}
