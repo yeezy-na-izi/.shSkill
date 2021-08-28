@@ -1,6 +1,5 @@
 body {
-  counter-reset: section;                     /* Устанавливает значение
-                                                 счётчика, равным 0 */
+  counter-reset: section;
 }
 
 section {
