@@ -18,7 +18,7 @@
                 {{ task.description|split_to:112|linebreaksbr }}
                 {% endautoescape %}
             </p>
-            <a href="#" style="background:{{ task.color }}" class="lesson-button">
+            <a href="{{ forloop.counter }}" style="background:{{ task.color }}" class="lesson-button">
                 {{ task.title }}
             </a>
         </div>

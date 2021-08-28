@@ -64,7 +64,7 @@ def courses_list(request):
     return render(request, 'education/courses/index.html', context)
 
 
-def tasks(request, course_id, slug):
+def lesson_page(request, course_id, slug):
     try:
         lesson = Course.objects.get(course_id=course_id).lessons.all().get(slug=slug)
     except Lesson.DoesNotExist:
@@ -84,7 +84,7 @@ def tasks(request, course_id, slug):
             form = CreateTask(data=request.POST)
             if form.is_valid():
                 x = form.save()
-                lesson.tasks.add(x)
+                lesson.lesson_page.add(x)
                 lesson.save()
             else:
                 messages.error(request, 'Что-то пошло не так')
@@ -101,5 +101,17 @@ def materials(request, course_id, slug):
             login_and_register(request),
         context = {'material': material}
         return render(request, 'education/material/index.html', context)
+    except Lesson.DoesNotExist:
+        raise Http404('Страницы не существует')
+
+
+def task(request, course_id, slug, index):
+    try:
+        lesson = Course.objects.get(course_id=course_id).lessons.all().get(slug=slug)
+        unique_task = list(lesson.tasks.all())[int(index) - 1]
+        if request.method == 'POST':
+            login_and_register(request)
+        context = {'task': unique_task}
+        return render(request, 'education/task/index.html', context)
     except Lesson.DoesNotExist:
         raise Http404('Страницы не существует')

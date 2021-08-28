@@ -8,6 +8,11 @@ def randomString():
     return um.make_random_password(length=32)
 
 
+class Examples(models.Model):
+    input = models.TextField(verbose_name='Входные данные')
+    output = models.TextField(verbose_name='Выходные данные')
+
+
 class MaterialBlocks(models.Model):
     class Meta:
         verbose_name = 'Блок материала'
@@ -65,6 +70,7 @@ class Task(models.Model):
     title = models.CharField(verbose_name='Название', max_length=100)
     description = models.TextField(verbose_name='Условие задачи')
     color = models.CharField(verbose_name='Цвет', choices=colors, max_length=7)
+    examples = models.ManyToManyField(verbose_name='Примеры', to=Examples)
 
     def __str__(self):
         return self.title
