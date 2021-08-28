@@ -1,0 +1,28 @@
+{% extends "extends/index.html" %}
+{% load static %}
+{% block title %}
+{{ task.title }}
+{% endblock %}
+
+{% block style %}
+<link rel="stylesheet" href="{% static 'css/task.css' %}">
+{% endblock %}
+
+{% block content %}
+<p class="task-title">
+    {{ task.title }}
+</p>
+<div class="task-container">
+    <div class="task">
+        <div class="description">
+            {% autoescape off %}
+            {{ task.description|linebreaks }}
+            {% endautoescape %}
+        </div>
+        
+    </div>
+    <div class="code">
+        code
+    </div>
+</div>
+{% endblock %}

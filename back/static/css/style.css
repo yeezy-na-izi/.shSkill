@@ -247,23 +247,3 @@
   background: radial-gradient(#f588d8, #c0a3e5);
 }
 
-/*.typing-text {
-    font-family: consolas;
-    transition: 0.5s;
-    border-right: 1px solid;
-
-    animation: typing 5s steps(9) infinite;
-}
-.typing-text:hover {
-
-}
-@keyframes typing {
-    0%
-    {
-        width: 0px;
-    }
-    30%
-    {
-        width: 77.47px;
-    }
-}*/
