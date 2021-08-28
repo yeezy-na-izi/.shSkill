@@ -5,11 +5,14 @@
 {% endblock %}
 {% block style %}
 <link rel="stylesheet" href="{% static 'css/course.css' %}"/>
+
 {% endblock %}
 {% block content %}
 
 <h3>{{ course }}</h3>
-<p class="mt-2">{{ course.description|linebreaks }}</p>
+<div class="text-muted shadow rounded-1 p-2" style="margin-inline: 5%;background: radial-gradient(#FFE4E1, #FFE4E1);">
+	{{ course.description|linebreaks }}
+</div>
 <div class="courses-container">
     {% for lesson in course.lessons.all %}
     {% if lesson.show %}

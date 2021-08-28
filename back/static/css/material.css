@@ -211,7 +211,7 @@ section.material__note {
     margin:28px 60px 32px
 }
 
-/* Материл заметки */
+/* Материал заметки */
 .material__comment-heading,.material__note-heading {
     color:var(--color-text-heading);
     font:var(--heading-3-mobile)

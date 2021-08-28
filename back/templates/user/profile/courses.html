@@ -6,12 +6,10 @@
         Твои курсы:
     </h2>
     {% if not_ended %}
-    <h3 class="ms-5" style="width:80%;">
-        В процессе:
-    </h3>
+
     <div class="row d-flex justify-content-center">
         {% for group in not_ended %}
-        <div class="card text-white bg-{{ group.course.color }} mb-3 mt-2" style="max-width: 30rem;">
+        <div class="card text-white bg-{{ group.course.color }} mb-3 mt-2" style="max-width: 30rem; cursor: pointer;" onclick="window.location='/courses/{{ group.course.course_id }}';">
             <div class="card-header">Курс</div>
             <div class="card-body">
                 <h5 class="card-title">{{ group.course.title }}</h5>
