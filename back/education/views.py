@@ -3,7 +3,7 @@ from django.contrib import messages
 from django.http import Http404
 
 from education.forms import CreateCourse, CreateLesson, CreateTask, CreateMaterialBlock, CreateExamples
-from education.models import Course, Lesson
+from education.models import Course, Lesson, Group
 from user.views import login_and_register
 
 
