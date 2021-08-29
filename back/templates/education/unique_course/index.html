@@ -9,9 +9,10 @@
 {% endblock %}
 {% block content %}
 
-<h3>{{ course }}</h3>
-<div class="text-muted shadow rounded-1 p-2" style="margin-inline: 5%;background: radial-gradient(#FFE4E1, #FFE4E1);">
+<h3 style="margin-inline: 7.5%; font-size: 2.2em">{{ course }}</h3>
+<div class="text-muted shadow rounded-1 p-2 course-description">
 	{{ course.description|linebreaks }}
+
 </div>
 <div class="courses-container">
     {% for lesson in course.lessons.all %}

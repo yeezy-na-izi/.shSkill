@@ -1,5 +1,14 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@200&display=swap');
 
+.course-description {
+    margin-inline: 7.5%;
+    background: radial-gradient(#CBBCFD, #CBBCFD);
+    font-size: 1.1em;
+}
+
+.course-description p {
+    color: light-gray;
+}
 
 .courses-container {
     font-family: 'Inter', sans-serif;
