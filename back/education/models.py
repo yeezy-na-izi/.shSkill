@@ -70,7 +70,8 @@ class Task(models.Model):
     title = models.CharField(verbose_name='Название', max_length=100)
     description = models.TextField(verbose_name='Условие задачи')
     color = models.CharField(verbose_name='Цвет', choices=colors, max_length=7)
-    examples = models.ManyToManyField(verbose_name='Примеры', to=Examples)
+    code = models.BooleanField(verbose_name='Код(да)/Ссылка(нет)', default=True)
+    examples = models.ManyToManyField(verbose_name='Примеры', to=Examples, blank=True)
 
     def __str__(self):
         return self.title
@@ -105,12 +106,32 @@ class Course(models.Model):
         ('danger', 'Красный'),
         ('warning', 'Желтый'),
         ('info', 'Голубой'),
-        ('light', 'Прозрачный',),
+        ('light', 'Прозрачный'),
         ('dark', 'Черный'),
-
     )
+    languages = (
+        ('py', 'Python'),
+        ('java', 'Java'),
+        ('kotlin', 'Kotlin'),
+        ('js', 'Java Script'),
+        ('c++', 'c++'),
+        ('c#', 'c#'),
+        ('c', 'c'),
+        ('np', 'Не программирование')
+    )
+    directions = (
+        ('web', 'Web'),
+        ('fb', 'Для начинающих'),
+        ('bot', 'Боты'),
+        ('back', 'Back'),
+        ('front', 'Front'),
+        ('ps', 'PhotoShop')
+    )
+
     title = models.CharField(verbose_name='Название', max_length=100)
     description = models.TextField(verbose_name='Описание')
+    language = models.CharField(verbose_name='', choices=languages, max_length=8, default='py')
+    direction = models.CharField(verbose_name='', choices=directions, max_length=8, default='web')
     lessons = models.ManyToManyField(verbose_name='Уроки', to=Lesson, blank=True)
     color = models.CharField(verbose_name='Цвет', max_length=16, choices=colors, default='primary')
     course_id = models.CharField(verbose_name='Курс линк', max_length=100, unique=True)
