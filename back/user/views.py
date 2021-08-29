@@ -84,6 +84,7 @@ def profile(request, username):
             user.phone = request.POST['phone']
             user.about_me = request.POST['about_me']
             user.save()
+        return redirect(request.path)
     if request.user == user:
         try:
             student = user.student
@@ -108,5 +109,7 @@ def logout_page(request):
 
 def teachers(request):
     _teachers = Account.objects.filter(~Q(teacher=None))
+    if request.method == 'POST':
+        login_and_register(request)
     context = {'teachers': _teachers}
     return render(request, 'user/teachers.html', context)

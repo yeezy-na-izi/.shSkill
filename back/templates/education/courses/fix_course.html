@@ -76,7 +76,14 @@
             </form>
         </div>
         <div class="modal-footer">
-            <button type="submit" class="btn btn-primary" form="formFixCourse{{ course.pk }}">Добавить</button>
+            {% if request.user.is_adminq %}
+            <form method="POST" id="removeCourse">
+                {% csrf_token %}
+                <input type="hidden" name="removeCourse" value="{{ course.pk }}">
+            </form>
+            <button type="submit" class="btn btn-danger" form="removeCourse">Удалить</button>
+            {% endif %}
+            <button type="submit" class="btn btn-primary" form="formFixCourse{{ course.pk }}">Редактировать</button>
         </div>
     </div>
 </div>

@@ -10,6 +10,7 @@ from user.views import login_and_register
 def home(request):
     if request.method == 'POST':
         login_and_register(request)
+        return redirect(request.path)
     context = {}
     return render(request, 'education/home/index.html', context)
 
@@ -26,6 +27,7 @@ def unique_course(request, course_id):
                 course.save()
             else:
                 messages.error(request, 'Что-то пошло не так')
+        return redirect(request.path)
     context = {'course': course}
     return render(request, 'education/unique_course/index.html', context)
 
@@ -56,6 +58,10 @@ def courses_list(request):
             else:
                 course.show = False
             course.save()
+        elif 'removeCourse' in request.POST:
+            course = Course.objects.get(pk=request.POST['removeCourse'])
+            course.delete()
+        return redirect(request.path)
     form = CreateCourse()
     courses = Course.objects.order_by('pk')
 
@@ -88,7 +94,7 @@ def lesson_page(request, course_id, slug):
                 lesson.save()
             else:
                 messages.error(request, 'Что-то пошло не так')
-
+        return redirect(request.path)
     context = {'lesson': lesson}
     return render(request, 'education/lesson/index.html', context)
 
@@ -119,7 +125,7 @@ def task(request, course_id, slug, index):
                     unique_task.save()
                 else:
                     messages.error(request, 'Что-то пошло не так')
-
+            return redirect(request.path)
         context = {'task': unique_task}
         return render(request, 'education/task/index.html', context)
     except Lesson.DoesNotExist:

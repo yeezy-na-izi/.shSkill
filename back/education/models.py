@@ -125,7 +125,8 @@ class Course(models.Model):
         ('bot', 'Боты'),
         ('back', 'Back'),
         ('front', 'Front'),
-        ('ps', 'PhotoShop')
+        ('ps', 'PhotoShop'),
+        ('vm', 'VideoRedactor')
     )
 
     title = models.CharField(verbose_name='Название', max_length=100)
