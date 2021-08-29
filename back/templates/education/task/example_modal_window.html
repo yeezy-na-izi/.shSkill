@@ -1,0 +1,34 @@
+<center>
+    <a type="button" data-mdb-toggle="modal" data-mdb-target="#addExampleModal">
+        <i class="fas fa-plus-circle fa-2x mb-3 mt-3" style="color: #bf01f4">
+        </i>
+    </a>
+</center>
+<div class="modal top fade" id="addExampleModal" tabindex="-1" aria-labelledby="ExampleModalLabel" aria-hidden="true"
+     data-mdb-backdrop="true" data-mdb-keyboard="true">
+    <div class="modal-dialog modal-lg  modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="ExampleModalLabel">Добавить пример</h5>
+                <button type="button" class="btn-close" data-mdb-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <form method="POST" enctype="multipart/form-data" id="formAddExample">
+                    {% csrf_token %}
+                    <input type="hidden" name="newExample"/>
+                    <div class="form-outline mb-4">
+                        <textarea name="input" class="form-control" id="input" rows="4"></textarea>
+                        <label class="form-label" for="input">Входные данные</label>
+                    </div>
+                    <div class="form-outline">
+                        <textarea name="output" class="form-control" id="output" rows="4"></textarea>
+                        <label class="form-label" for="output">Выходные данные</label>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="submit" class="btn btn-primary" form="formAddExample">Добавить</button>
+            </div>
+        </div>
+    </div>
+</div>

@@ -19,10 +19,22 @@
             {{ task.description|linebreaks }}
             {% endautoescape %}
         </div>
-        
+        {% for example in task.examples.all %}
+        <div class="example-container">
+            <div class="input">
+                {{ example.input }}
+            </div>
+            <div class="output">
+                {{ example.output }}
+            </div>
+        </div>
+        {% endfor %}
     </div>
     <div class="code">
         code
     </div>
 </div>
+{% if request.user.teacher %}
+{% include 'education/task/example_modal_window.html' %}
+{% endif %}
 {% endblock %}

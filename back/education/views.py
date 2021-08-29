@@ -2,7 +2,7 @@ from django.shortcuts import render, redirect
 from django.contrib import messages
 from django.http import Http404
 
-from education.forms import CreateCourse, CreateLesson, CreateTask, CreateMaterialBlock
+from education.forms import CreateCourse, CreateLesson, CreateTask, CreateMaterialBlock, CreateExamples
 from education.models import Course, Lesson
 from user.views import login_and_register
 
@@ -111,6 +111,15 @@ def task(request, course_id, slug, index):
         unique_task = list(lesson.tasks.order_by('pk'))[int(index) - 1]
         if request.method == 'POST':
             login_and_register(request)
+            if 'newExample' in request.POST:
+                form = CreateExamples(data=request.POST)
+                if form.is_valid():
+                    x = form.save()
+                    unique_task.examples.add(x)
+                    unique_task.save()
+                else:
+                    messages.error(request, 'Что-то пошло не так')
+
         context = {'task': unique_task}
         return render(request, 'education/task/index.html', context)
     except Lesson.DoesNotExist:

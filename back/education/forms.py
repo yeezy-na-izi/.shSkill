@@ -1,5 +1,7 @@
+from pyexpat import model
+
 from django import forms
-from .models import Course, Lesson, Task, MaterialBlocks
+from .models import Course, Lesson, Task, MaterialBlocks, Examples
 
 
 class CreateCourse(forms.ModelForm):
@@ -45,4 +47,13 @@ class CreateMaterialBlock(forms.ModelForm):
             'block',
             'color',
             'icon'
+        ]
+
+
+class CreateExamples(forms.ModelForm):
+    class Meta:
+        model = Examples
+        fields = [
+            'input',
+            'output'
         ]
