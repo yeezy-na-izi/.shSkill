@@ -1,5 +1,14 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@200&display=swap');
 
+.course-description {
+    margin-inline: 7.5%;
+    background: radial-gradient(#CBBCFD, #CBBCFD);
+    font-size: 1.1em;
+}
+
+.course-description p {
+    color: light-gray;
+}
 
 .courses-container {
     font-family: 'Inter', sans-serif;
@@ -85,7 +94,7 @@
 
 .progress::after {
 	border-radius: 3px;
-	background-color: #325596;
+	background-color: #484289;
 	content: '';
 	position: absolute;
 	top: 0;
@@ -101,7 +110,7 @@
 }
 
 .course-btn {
-	background-color: #28359a;
+	background-color: #484289;
 	border: 0;
 	border-radius: 50px;
 	box-shadow: 0 10px 10px rgba(0, 0, 0, 0.2);
