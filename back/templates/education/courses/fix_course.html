@@ -5,7 +5,7 @@
             <button type="button" class="btn-close" data-mdb-dismiss="modal" aria-label="Close"></button>
         </div>
         <div class="modal-body">
-            <form method="POST" enctype="multipart/form-data" id="formFixCourse">
+            <form method="POST" enctype="multipart/form-data" id="formFixCourse{{ course.pk }}">
                 {% csrf_token %}
                 <input type="hidden" name="fixCourse" value="{{ course.pk }}"/>
                 <div class="form-outline mb-4">
@@ -76,7 +76,7 @@
             </form>
         </div>
         <div class="modal-footer">
-            <button type="submit" class="btn btn-primary" form="formFixCourse">Добавить</button>
+            <button type="submit" class="btn btn-primary" form="formFixCourse{{ course.pk }}">Добавить</button>
         </div>
     </div>
 </div>

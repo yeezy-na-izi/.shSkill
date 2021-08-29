@@ -27,20 +27,20 @@
                 </div>
 
                 {% endif %}
-                Курс
+                {{ course.get_language_display }} / {{ course.get_direction_display }}
             </div>
             <div class="card-body" style="cursor: pointer;"
                  onclick="window.location='/courses/{{ course.course_id }}';">
                 <h5 class="card-title">{{ course.title }}</h5>
                 <p class="card-text">
-                    {{ course.description | linebreaks}}
+                    {{ course.description | linebreaks }}
                 </p>
             </div>
         </div>
         {% elif request.user.teacher %}
         <div class="card text-white bg-{{ course.color }} mb-3 mt-2 ms-3 me-3"
              style="max-width: 25rem;">
-            <div class="card-header">
+            <div class="card-header" style="text-shadow: 1px 0px 1px black;">
                 <a style="margin-inline-end: 3px; writing-mode: horizontal-tb;" data-mdb-toggle="modal"
                    data-mdb-target="#fixCourse{{ course.pk }}">
                     <i class="fas fa-cog"></i>
@@ -51,7 +51,7 @@
                      data-mdb-backdrop="true" data-mdb-keyboard="true">
                     {% include 'education/courses/fix_course.html' %}
                 </div>
-                Курс (закрыт для просмотра)
+                {{ course.get_language_display }} / {{ course.get_direction_display }} (закрыт для просмотра)
             </div>
             <div class="card-body" style="cursor: pointer;"
                  onclick="window.location='/courses/{{ course.course_id }}';">
