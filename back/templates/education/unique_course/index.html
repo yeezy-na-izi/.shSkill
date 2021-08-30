@@ -1,5 +1,6 @@
 {% extends "extends/index.html" %}
 {% load static %}
+{% load custom_tags %}
 {% block title %}
 {{ course }}
 {% endblock %}
@@ -11,50 +12,55 @@
 
 <h3 style="margin-inline: 7.5%; font-size: 2.2em">{{ course }}</h3>
 <div class="text-muted shadow rounded-1 p-2 course-description">
-	{{ course.description|linebreaks }}
+    {{ course.description|linebreaks }}
 
 </div>
 <div class="courses-container">
     {% for lesson in course.lessons.all %}
     {% if lesson.show %}
-	<div class="course">
-		<div class="course-preview">
-			<h6>Course</h6>
-			<h2>{{ course.title }}</h2>
-			<a href="#">Открыть урок <i class="fas fa-chevron-right"></i></a>
+    <div class="course" style="margin-top: 20px;">
+        <div class="course-preview">
+            <h6>Урок {{ forloop.counter }}</h6>
+            <h2>{{ course.title }}</h2>
+            <a href="{{ lesson.slug }}/">Открыть урок <i class="fas fa-chevron-right"></i></a>
 
-		</div>
-		<div class="course-info">
-			<div class="progress-container">
-				<div class="progress"></div>
-				<span class="progress-text">
-					0/{{ lesson.tasks.count }} Задач
+        </div>
+        <div class="course-info">
+            <div class="progress-container">
+
+                <div class="progress" style="--percentsAge: {{ request.user |getSolvedTasks:lesson |getPercents:lesson.tasks.count }}%;"></div>
+                <span class="progress-text">
+					{{ request.user |getSolvedTasks:lesson }}/{{ lesson.tasks.count }} Задач
 				</span>
-			</div>
-			<h6>Chapter {{ forloop.counter }}</h6>
-			<h2>{{ lesson }}</h2>
-			<a class="course-btn" href="{{ lesson.slug }}/" style="color: #fff;">Открыть</a>
-		</div>
-	</div>
+            </div>
+            <h6>Описание</h6>
+            <h2>{{ lesson }}</h2>
+            {% if lesson in paidLessons %}
+            <a class="course-btn" href="{{ lesson.slug }}/" style="color: #fff;">Открыть</a>
+            {% else %}
+            <a class="course-btn" href="" style="color: #fff;">{{ lesson.price |floatformat:"0"}} ₽</a>
+            {% endif %}
+        </div>
+    </div>
     {% elif request.user.teacher %}
-    <div class="course" style="margin-top:20px;" >
-		<div class="course-preview">
-			<h6>Урок {{ forloop.counter }}</h6>
-			<h2>{{lesson}}</h2>
-			<a href="{{ lesson.slug }}/">Открыть урок <i class="fas fa-chevron-right"></i></a>
-		</div>
-		<div class="course-info">
-			<div class="progress-container">
-				<div class="progress"></div>
-				<span class="progress-text">
+    <div class="course" style="margin-top:20px;">
+        <div class="course-preview">
+            <h6>Урок {{ forloop.counter }}</h6>
+            <h2>{{lesson}}</h2>
+            <a href="{{ lesson.slug }}/">Открыть урок <i class="fas fa-chevron-right"></i></a>
+        </div>
+        <div class="course-info">
+            <div class="progress-container">
+                <div class="progress"></div>
+                <span class="progress-text">
 					0/{{ lesson.tasks.count }} Задач
 				</span>
-			</div>
-			<h6>Описание</h6>
-			<h4>{{ lesson.description }} <br/>(Урок закрыт для просмотра) </h4>
-			<a class="course-btn" href="{{ lesson.slug }}/" style="color: #fff;">Открыть</a>
-		</div>
-	</div>
+            </div>
+            <h6>Описание</h6>
+            <h4>{{ lesson.description }} <br/>(Урок закрыт для просмотра) </h4>
+            <a class="course-btn" href="{{ lesson.slug }}/" style="color: #fff;">Открыть</a>
+        </div>
+    </div>
     {% endif %}
     {% endfor %}
 </div>

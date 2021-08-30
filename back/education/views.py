@@ -29,6 +29,13 @@ def unique_course(request, course_id):
                 messages.error(request, 'Что-то пошло не так')
         return redirect(request.path)
     context = {'course': course}
+    if request.user.student:
+        paidLessons = []
+        for lesson in PaidLesson.objects.filter(user=request.user.student):
+            paidLessons.append(lesson.lesson)
+        context['paidLessons'] = paidLessons
+
+
     return render(request, 'education/unique_course/index.html', context)
 
 
@@ -116,7 +123,7 @@ def pay_for_lesson(request, course_id, slug):
                 request.user.student.save()
                 messages.success(request, 'Вы успешно оплатили урок')
             else:
-                messages.info(request, 'Вы уже оплачивали данный курс')
+                messages.info(request, 'Вы уже оплачивали данный урок')
         else:
             messages.error(request, 'У вас недостаточно средств')
     return redirect('/'.join(request.path.split('/')[:-2]))

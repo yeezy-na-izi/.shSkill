@@ -1,5 +1,5 @@
 from django import template
-
+from .models import PaidLesson
 register = template.Library()
 
 
@@ -36,3 +36,19 @@ def join_with(my_object, key: str):
 def file_split(my_object, key: str):
     x = str(my_object)
     return key.join(x.split(key)[1:])
+
+
+@register.filter(name='getPercents')
+def PercentsProgress(solved, allTasks):
+    try:
+        return int(int(solved) / int(allTasks) * 100)
+    except (ValueError, ZeroDivisionError):
+        return None
+
+
+@register.filter(name='getSolvedTasks')
+def getSolvedTask(user, lesson):
+    try:
+        return len(PaidLesson.objects.get(user=user.student, lesson=lesson).solved_tasks.all())
+    except PaidLesson.DoesNotExist:
+        return 0
