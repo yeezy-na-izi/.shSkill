@@ -19,7 +19,7 @@
                 {% endautoescape %}
             </p>
             <a href="{{ forloop.counter }}" style="background:{{ task.color }}" class="lesson-button">
-                {{ task.title }}
+                {{ task.title }}{% if task in paid_lesson.solved_tasks.all %} <i class="fas fa-check"></i>{% endif %}
             </a>
         </div>
     </div>
