@@ -55,7 +55,12 @@
                      data-mdb-backdrop="true" data-mdb-keyboard="true">
                     {% include 'education/courses/fix_course.html' %}
                 </div>
-                {{ course.get_language_display }} / {{ course.get_direction_display }} (закрыт для просмотра)
+                {% if course.language == 'np' %}
+                {{ course.get_direction_display }}
+                {% else %}
+                {{ course.get_language_display }} / {{ course.get_direction_display }}
+                {% endif %}
+                (закрыт для просмотра)
             </div>
             <div class="card-body" style="cursor: pointer;"
                  onclick="window.location='/courses/{{ course.course_id }}';">
