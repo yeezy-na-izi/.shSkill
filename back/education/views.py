@@ -98,7 +98,7 @@ def lesson_page(request, course_id, slug):
     context = {'lesson': lesson}
     if not request.user.teacher:
         try:
-            paid_lesson = PaidLesson.objects.get_or_create(lesson=lesson, user=request.user.student)
+            paid_lesson = PaidLesson.objects.get(lesson=lesson, user=request.user.student)
             context = {'lesson': lesson, 'paid_lesson': paid_lesson}
         except PaidLesson.DoesNotExist:
             messages.error(request, 'Вы еще не оплатили урок')
