@@ -88,10 +88,23 @@ class Lesson(models.Model):
     description = models.TextField(verbose_name='Описание')
     price = models.FloatField(verbose_name='Цена', default=1000)
     show = models.BooleanField(verbose_name='Показать на странице', default=True)
-    slug = models.SlugField(verbose_name='Код урока', default=randomString())
+    slug = models.SlugField(verbose_name='Код урока', default=randomString(), unique=True)
 
     def __str__(self):
         return self.title
+
+
+class PaidLesson(models.Model):
+    class Meta:
+        verbose_name = 'Оплаченный урок'
+        verbose_name_plural = 'Оплаченные уроки'
+
+    user = models.ForeignKey(verbose_name='Человек', to=Student, on_delete=models.CASCADE)
+    lesson = models.ForeignKey(verbose_name='Урок', to=Lesson, on_delete=models.CASCADE)
+    solved_tasks = models.ManyToManyField(verbose_name='Решенные задачи', to=Task, blank=True)
+
+    def __str__(self):
+        return f'{self.user}  {self.lesson}'
 
 
 class Course(models.Model):

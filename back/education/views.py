@@ -3,7 +3,7 @@ from django.contrib import messages
 from django.http import Http404
 
 from education.forms import CreateCourse, CreateLesson, CreateTask, CreateMaterialBlock, CreateExamples
-from education.models import Course, Lesson, Group
+from education.models import Course, Lesson, Group, PaidLesson
 from user.views import login_and_register
 
 
@@ -96,7 +96,30 @@ def lesson_page(request, course_id, slug):
                 messages.error(request, 'Что-то пошло не так')
         return redirect(request.path)
     context = {'lesson': lesson}
+    if not request.user.teacher:
+        try:
+            paid_lesson = PaidLesson.objects.get_or_create(lesson=lesson, user=request.user.student)
+            context = {'lesson': lesson, 'paid_lesson': paid_lesson}
+        except PaidLesson.DoesNotExist:
+            messages.error(request, 'Вы еще не оплатили урок')
+            return redirect('/'.join(request.path.split('/')[:-2]))
     return render(request, 'education/lesson/index.html', context)
+
+
+def pay_for_lesson(request, course_id, slug):
+    lesson = Course.objects.get(course_id=course_id).lessons.all().get(slug=slug)
+    if request.user.student:
+        if request.user.student.balance >= lesson.price:
+            obj, create = PaidLesson.objects.get_or_create(lesson=lesson, user=request.user.student)
+            if create:
+                request.user.student.balance -= lesson.price
+                request.user.student.save()
+                messages.success(request, 'Вы успешно оплатили урок')
+            else:
+                messages.info(request, 'Вы уже оплачивали данный курс')
+        else:
+            messages.error(request, 'У вас недостаточно средств')
+    return redirect('/'.join(request.path.split('/')[:-2]))
 
 
 def materials(request, course_id, slug):

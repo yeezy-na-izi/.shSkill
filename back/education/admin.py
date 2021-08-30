@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Task, Lesson, Course, Group, Date, Material, MaterialBlocks, Examples
+from .models import Task, Lesson, Course, Group, Date, Material, MaterialBlocks, Examples, PaidLesson
 
 admin.site.register(Task)
 admin.site.register(Lesson)
@@ -9,3 +9,4 @@ admin.site.register(Date)
 admin.site.register(Material)
 admin.site.register(MaterialBlocks)
 admin.site.register(Examples)
+admin.site.register(PaidLesson)
