@@ -38,7 +38,7 @@
             {% if lesson in paidLessons %}
             <a class="course-btn" href="{{ lesson.slug }}/" style="color: #fff;">Открыть</a>
             {% else %}
-            <a class="course-btn" href="" style="color: #fff;">{{ lesson.price |floatformat:"0"}} ₽</a>
+            <a class="course-btn" href="{{ lesson.slug }}/pay/" style="color: #fff;">{{ lesson.price |floatformat:"0"}} ₽</a>
             {% endif %}
         </div>
     </div>

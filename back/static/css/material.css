@@ -179,7 +179,7 @@ section.material__note {
     counter-reset:li
 }
 
-.material__chapter p,.material__chapter pre {
+.material__chapter p,.material__chapter pre,.material__chapter h3{
     margin:12px 0;
     padding:0
 }
@@ -194,7 +194,7 @@ section.material__note {
     border:1px solid var(--color-control-outline)
 }
 
-.material__chapter p,.material__chapter pre {
+.material__chapter p,.material__chapter pre,.material__chapter h3{
         margin:8px 60px 16px
 }
 
@@ -243,6 +243,21 @@ section.material__note {
 
 .material__illustration {
     max-width:100%
+}
+
+li.section-list {
+    list-style-type: none;
+}
+
+ol.section-list{
+    list-style-type: none;
+}
+
+ol.section-list p {
+    margin-left:20px;
+    background: var(--color-variant-status-is-solving);
+    border-radius: 15px;
+    padding: 16px 20px 20px;
 }
 
 :root {

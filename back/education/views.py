@@ -3,7 +3,7 @@ from django.contrib import messages
 from django.http import Http404
 
 from education.forms import CreateCourse, CreateLesson, CreateTask, CreateMaterialBlock, CreateExamples
-from education.models import Course, Lesson, Group, PaidLesson
+from education.models import Course, Lesson, Group, PaidLesson, randomString
 from user.views import login_and_register
 
 
@@ -34,8 +34,6 @@ def unique_course(request, course_id):
         for lesson in PaidLesson.objects.filter(user=request.user.student):
             paidLessons.append(lesson.lesson)
         context['paidLessons'] = paidLessons
-
-
     return render(request, 'education/unique_course/index.html', context)
 
 
@@ -47,6 +45,7 @@ def courses_list(request):
                 request.POST,
                 request.FILES
             )
+            form.slug = randomString()
             print(1)
             if form.is_valid():
                 form.save()
@@ -126,6 +125,7 @@ def pay_for_lesson(request, course_id, slug):
                 messages.info(request, 'Вы уже оплачивали данный урок')
         else:
             messages.error(request, 'У вас недостаточно средств')
+            return redirect('/'.join(request.path.split('/')[:-3]))
     return redirect('/'.join(request.path.split('/')[:-2]))
 
 
