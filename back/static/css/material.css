@@ -32,7 +32,7 @@ section.material__note {
 .material__chapter pre code, .material__chapter pre samp {
     display: block;
     overflow: auto;
-    padding: 8px;
+    padding: 15px 30px 0;
     border-radius: 8px;
     white-space: pre;
     box-shadow: 0 2px 10px rgb(0 0 0 / 20%);
