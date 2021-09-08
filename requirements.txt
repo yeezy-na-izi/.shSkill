@@ -1,4 +1,4 @@
 Django
 six
-psycopg2-binary
+psycopg2
 Pillow
