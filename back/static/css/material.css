@@ -29,6 +29,21 @@ section.material__note {
     background: #ACAFFC;
 }
 
+li.section-list {
+    list-style-type: none;
+}
+
+ol.section-list{
+    list-style-type: none;
+}
+
+ol.section-list p {
+    margin-left:20px;
+    background: var(--color-variant-status-is-solving);
+    border-radius: 15px;
+    padding: 16px 20px 20px;
+}
+
 .material__chapter pre code, .material__chapter pre samp {
     display: block;
     overflow: auto;
@@ -243,21 +258,6 @@ section.material__note {
 
 .material__illustration {
     max-width:100%
-}
-
-li.section-list {
-    list-style-type: none;
-}
-
-ol.section-list{
-    list-style-type: none;
-}
-
-ol.section-list p {
-    margin-left:20px;
-    background: var(--color-variant-status-is-solving);
-    border-radius: 15px;
-    padding: 16px 20px 20px;
 }
 
 :root {

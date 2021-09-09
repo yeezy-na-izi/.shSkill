@@ -1,0 +1,72 @@
+{% load static %}
+<section class="material__chapter">
+    <h2 id="3">Создание первого проекта на Django</h2>
+    <p>Создайте новый проект Django под названием test_project,
+        следующая команда поможет это сделать. Не забывайте про «.»</p>
+    <pre><strong style="font-size:15px">Command Line</strong>
+        <code>django-admin startproject test_project .
+        </code>
+    </pre>
+    <p>
+        Здесь стоит остановиться, чтобы объяснить, почему вам следует добавить точку. к команде. Если вы просто
+        запустите
+        django-admin startproject test_project, то по умолчанию Django создаст такую cтруктуру каталогов:
+    </p>
+    <pre><strong style="font-size:15px">File Structure</strong>
+        <code>└── test_project
+    ├── manage.py
+    └── test_project
+        ├── __init__.py
+        ├── settings.py
+        ├── urls.py
+        └── wsgi.py
+        </code>
+    </pre>
+    <p>
+        Посмотрите, как он создает новый каталог test_project, а затем внутри него файл manage.py и каталог
+        test_project? Мне это кажется излишним, поскольку мы уже создали папку DjangoProject в нашем рабочем
+        пространстве и перешли в нее. Запустив <i>django-admin startproject test_project .</i> с точкой в конце,
+        означающей установку в текущий каталог, вместо этого результат будет следующим:
+    </p>
+    <pre><strong style="font-size:15px">File Structure</strong>
+        <code>├── manage.py
+└── test_project
+    ├── __init__.py
+    ├── settings.py
+    ├── urls.py
+    └── wsgi.py
+        </code>
+    </pre>
+    <p>
+        Вывод состоит в том, что на самом деле не имеет значения, включаете ли вы точку или нет в конце команды, но я
+        предпочитаю включать точку, и именно так мы сделаем это в этом курсе.
+    </p>
+    <p>Теперь давайте подтвердим, что все работает, запустив локальный веб-сервер Django.</p>
+    <pre><strong style="font-size:15px">Command Line</strong>
+        <code>python manage.py runserver
+        </code>
+    </pre>
+    <p>Если ты посетишь <a href="http://127.0.0.1:8000/">http://127.0.0.1:8000/</a> ты увидишь подобную картинку:</p>
+    <div class="material__content-positioner">
+        <img class="material__illustration"
+             src="{% static 'education/course/django-runserver.png' %}"
+             width="600" height="auto"/>
+    </div>
+    <p>
+        Чтобы остановить наш локальный сервер, введите <i>Control + c</i>. Затем выйдите из нашей виртуальной среды,
+        используя команду <i>exit</i>.
+    </p>
+    <pre><strong style="font-size:15px">Command Line</strong>
+        <code>exit
+        </code>
+    </pre>
+    <p>
+        Мы всегда можем снова активировать виртуальную среду с помощью оболочки pipenv в любое время.
+    </p>
+    <p>
+        Или PyCharm - тогда
+    </p>
+    <p>
+        ...
+    </p>
+</section>
