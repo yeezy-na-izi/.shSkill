@@ -43,6 +43,9 @@ class MaterialBlocks(models.Model):
     color = models.CharField(max_length=1, choices=colours)
     icon = models.CharField(max_length=32, choices=icons, default='bolt')
 
+    def __str__(self):
+        return self.title
+
 
 class Material(models.Model):
     class Meta:
